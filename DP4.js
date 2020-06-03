@@ -6,6 +6,7 @@ $( document ).ready(function() {
 
 var restaurant = document.getElementById("restaurant");
 var season = document.getElementById("season");
+$(restaurant).css("background-color", "#2BC78C");
 function bindEvents(){
   restaurant.onclick = function(){
     $(this).css("background-color", "#2BC78C");
@@ -17,6 +18,10 @@ function bindEvents(){
     $(restaurant).css("background-color", "#8FECC9");
     season();
   }
+}
+
+function findgroup(){
+  
 }
 
 function restaurant(){
