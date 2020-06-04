@@ -1,11 +1,12 @@
 body {
-    background-color: #eeeeee;
+    background-color: white;
+    font-family: 'Baloo Thambi 2', cursive;
 }
 .collapse{
     border-collapse: collapse;
 }
 
-table{
+#table{
     width: 100%;
     text-align: center;
 }
@@ -26,4 +27,45 @@ table th{
     padding-left: 30px;
     padding-right: 30px;
 }
-/*your code here*/
+.months{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  color: gray;
+  font-size: 20px;
+}
+
+#month2{
+  font-size: 30px;
+  color: gray;
+  font-weight: bold;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+#select{
+  background-color: DarkOrange;
+  font-size: white;
+  font-weight: bold;
+  font-family: 'Baloo Thambi 2', cursive;
+  font-size: 18px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#vf{
+  background-color: white;
+  font-size: 30px;
+  color: grey;
+  font-weight: bold;
+  width: 50%;
+}
