@@ -19,17 +19,3 @@ function bindEvents(){
     season();
   }
 }
-
-function findgroup(){
-  
-}
-
-function restaurant(){
-
-}
-
-function season(){
-  
-}
-
-bindEvents();
