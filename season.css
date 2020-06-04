@@ -14,19 +14,6 @@ table th{
     background-color: #8FECC9;
 }
 
-.autocomplete{
-    position: relative;
-    display: inline-block;
-}
-
-.findgroup{
-    background-color: #E7FDF5;
-}
-
-.inner_table{
-    padding-left: 30px;
-    padding-right: 30px;
-}
 .months{
   display: flex;
   justify-content: center;
