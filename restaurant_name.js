@@ -2,8 +2,6 @@
 // has finished loading in the browser.
 
 $( document ).ready(function() {
-  });
-
 var restaurant = document.getElementById("restaurant");
 var season = document.getElementById("season");
 $(restaurant).css("background-color", "#2BC78C");
@@ -22,41 +20,13 @@ function bindEvents(){
 
 function findgroup(){
   var table = document.getElementById('grouptable');
-  
-  groups = [{
-    'profile' : [
-      {'name': 'Jisu Yim',
-      'comment': 'Waiting for anyone who can enjoy dinner!',
-      'img' : 'user img/user1.png'}
-    , {'name': 'Taylor Swift',
-    'comment': 'Enjoy meal with us!',
-    'img' : 'user img/user2.png'}
-    ],
-    'number': {'current': 2, 'expected': 3},
-    'date' : "2020.05.16 5PM ~ 7PM"
-  },{
-    'profile' : [
-      {'name': 'Neila Rostom',
-      'comment': 'Waiting for anyone who can enjoy dinner!',
-      'img' : 'user img/user3.png'}
-    , {'name': 'Anchit Tandon',
-    'comment': 'Enjoy meal with us!',
-    'img' : 'user img/user4.png'}
-    , {'name': 'Wang Junsen',
-    'comment': 'I really wanted to go here.',
-    'img' : 'user img/user5.png'}
-    ],
-    'number': {'current': 3, 'expected': 4},
-    'date' : "2020.05.16 5PM ~ 7PM"
-  }]
-
-  for (var j=0; j<groups.length; j++){
+  for (var j=0; j<2; j++){
     group = groups[j];
   var profile = group['profile'];
   var number = group['number'];
   var date = group['date'];
   var groupTable = document.createElement("table");
-  groupTable.style.backgroundColor = "white";
+  groupTable.style.backgroundColor = "#E7FDF5";
   groupTable.style.marginTop = "10px";
   groupTable.style.marginBottom = "5px";
   var numberRow = groupTable.insertRow(0);
@@ -82,7 +52,9 @@ function findgroup(){
   cell2.align = 'right';
   sendMessage = document.createElement('button');
   sendMessage.innerHTML = '<b>Send Message</b>';
-  //sendMessage.onclick = message(groupTable);
+  sendMessage.onclick = function(){
+    dialog1.dialog( "open" );
+  };
   cell2.append(sendMessage);
 
   var profilecell = groupTable.insertRow(groupTable.rows.length).insertCell(0);
@@ -94,16 +66,13 @@ function findgroup(){
     var cell = document.createElement('tr');
     seeProfile = document.createElement('button');
     seeProfile.innerHTML = '<b>See Profile</b>';
-    imgSrc = '<img src= "'+user['img']+'" height = "20"></img>';
-    cell1 = cell.insertCell(0)
-    cell1.innerHTML = imgSrc;
-    cell2 = cell.insertCell(1)
+    imgSrc = '<div class="crop"><img src= "'+user['img']+'" height = "20"></img></div>';
+    cell1 = cell.insertCell(0); cell1.innerHTML = imgSrc;
+    cell1.align = 'right'; cell1.style.width = "20px";
+    cell2 = cell.insertCell(1);
     cell2.innerHTML = user['name'];
     cell2.style.fontSize = "15px";
     cell2.align = 'left';
-    cell3 = cell.insertCell(2)
-    cell3.append(seeProfile);
-    cell3.align = 'right';
     cell.colSpan = "2";
     profileTable.appendChild(cell);
 
@@ -113,11 +82,11 @@ function findgroup(){
     cell1.width = 400;
     cell1.style.wordBreak = "break-all";
     cell1.style.borderStyle = "dotted";
-    cell1.style.borderWidth = "1px";
+    cell1.style.borderWidth = "1.5px";
     cell1.innerText = user['comment'];
-    cell1.style.padding = "5px";
-    cell1.align = "left";
-    cell1.style.fontSize = "12px";
+    cell1.style.padding = "1px";
+    cell1.style.fontSize = "15px";
+    cell1.style.borderColor="#20D994";
     profileTable.width = groupTable.width;
     profileTable.appendChild(cell);
 
@@ -128,6 +97,7 @@ function findgroup(){
   profilecell.style.borderWidth = "1px";
   profilecell.style.padding = "5px";
   profilecell.style.backgroundColor = "#FFF";
+  profilecell.style.borderColor = "#20D994";
 
   var cell = groupTable.insertRow(groupTable.rows.length);
   cell1 = cell.insertCell(0);
@@ -141,24 +111,8 @@ function findgroup(){
   groupCell.colSpan = "2";
   groupCell.append(groupTable);
 }
-  buttonStyle();
 }
 
-function buttonStyle(){
-  var btns = document.getElementsByTagName('button');
-  for(var i=0; i<btns.length; i++){
-    var btn = btns[i];
-    btn.style.backgroundColor = '#FFF';
-    btn.style.borderStyle = 'solid';
-    btn.style.borderWidth = '1.5px';
-    btn.style.borderRadius = '20px';
-    btn.style.borderColor = '#20D994';
-    btn.style.fontSize = '10px';
-    btn.style.color = '#20D994';
-    btn.style.marginBottom = '5px';
-    btn.style.fontFamily = "'Baloo Thambi 2', cursive";
-  }
-}
 function createGroup(){
 
 }
@@ -194,3 +148,61 @@ function saveData(){
   database = firebase.database();
   ref = database.ref('restaurant_name');
 }
+
+var dialog, form,
+     
+  // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+name = $( "#name" ),
+email = $( "#email" ),
+password = $( "#password" ),
+allFields = $( [] ).add( name ).add( email ).add( password ),
+tips = $( ".validateTips" );
+
+function updateTips( t ) {
+  tips
+    .text( t )
+    .addClass( "ui-state-highlight" );
+  setTimeout(function() {
+    tips.removeClass( "ui-state-highlight", 1500 );
+  }, 500 );
+}
+
+function checkRegexp( o, regexp, n ) {
+  if ( !( regexp.test( o.val() ) ) ) {
+    o.addClass( "ui-state-error" );
+    updateTips( n );
+    return false;
+  } else {
+    return true;
+  }
+}
+     
+function send() {
+  allFields.removeClass( "ui-state-error" );
+  dialog1.dialog( "close" );
+  return true;
+}
+
+dialog1 = $( "#message-form" ).dialog({
+  autoOpen: false,
+  height: 400,
+  width: 350,
+  modal: true,
+  buttons: {
+    "Send": send,
+    Cancel: function() {
+      dialog1.dialog( "close" );
+    }
+  },
+  close: function() {
+    form[ 0 ].reset();
+    allFields.removeClass( "ui-state-error" );
+  }
+});
+
+form = dialog1.find( "form" ).on( "submit", function( event ) {
+  event.preventDefault();
+  send();
+});
+
+});

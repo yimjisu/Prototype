@@ -1,7 +1,7 @@
 body {
     background-color: #eeeeee;
     padding : 0px;
-    font-style: ;
+    margin : 0px;
 }
 .collapse{
     border-collapse: collapse;
@@ -53,5 +53,6 @@ button{
     color : #173143;
     margin-bottom : 5px;
     font-family : 'Baloo Thambi 2', cursive;
+    font-weight: bold;
 }
 /*your code here*/

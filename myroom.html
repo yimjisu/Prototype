@@ -64,7 +64,13 @@
         <thead>
           <tr>
             <th style="width: 30%" class = "menu" id="restaurant">
-              <strong>Restaurant</strong>
+              <a href = ./restaurant.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: blue; text-decoration: none;}
+                 </style>
+              Restaurant</a></th>
             </th>
             <th style="width: 30%" class = "menu" id="season">
               <a href = ./season.html>
@@ -75,7 +81,7 @@
                  </style>
               Season Recommendation</a></th>
             <th style="width: 10%"></th>
-            <th style="width: 30%" class = "menu" id="mypage"><a href = ./myroom.html>
+            <th style="width: 30%" class = "menu" id="myroom"><a href = ./myroom.html>
               <style type="text/css">
                 a:link { color: black; text-decoration: none;}
                 a:visited { color: black; text-decoration: none;}
@@ -87,9 +93,7 @@
     </table>
     <table>
       <tr>
-      <td id="goback" style = "align-self: flex-start;"><a href = ./restaurant.html><button> <<  Go Back</button></a></td>
-      <td id="restaurant_name" style="text-align: left; padding-left: 8%;font-size: large;">Join to a group of</td>
-      <td id="create-group" style="text-align: right; width: 400px;padding-right: 16%; font-size: smaller;">
+      <td id="create-group" style="text-align: left; width: 400px;padding-left: 16%; font-size: smaller;">
       <button><i class="fas fa-plus-circle"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>
         <b>Create new group</b></button></td></tr>
         </table>
@@ -97,6 +101,6 @@
     </table>
     <script src="jquery/js/jquery-1.9.0.min.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="./group_restaurant_name.js"></script>
+    <script src="./myroom.js"></script>
   </body>
 </html>

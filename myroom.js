@@ -6,29 +6,10 @@ $( document ).ready(function() {
   var userImg = "https://image.flaticon.com/icons/png/512/272/272075.png";
   var Name = "Veggie Paradise";
   var groups = [];
-var restaurant = document.getElementById("restaurant");
-var season = document.getElementById("season");
+var myroom = document.getElementById("myroom");
 
-$(restaurant).css("background-color", "#2BC78C");
-function bindEvents(){
-  restaurant.onclick = function(){
-    $(this).css("background-color", "#2BC78C");
-    $(season).css("background-color", "#8FECC9");
-    restaurant();
-  }
-  season.onclick = function(){
-    $(this).css("background-color", "#2BC78C");
-    $(restaurant).css("background-color", "#8FECC9");
-    season();
-  }
-}
+$(myroom).css("background-color", "#2BC78C");
 
-function restaurantName(){
-  var name = "Veggie Paradise";
-  var cell = document.getElementById('restaurant_name');
-  cell.innerText += ' '+name;
-  cell.style.fontWeight = 'bold';
-}
 function findgroup(){
   var table = document.getElementById('group table');
   var numRows =table.rows.length;
@@ -65,13 +46,6 @@ function findgroup(){
   cell1.innerHTML += '  '+number['current']+'/'+number['expected'];
   cell1.style.fontSize = "12px";  cell1.style.letterSpacing = '5px';
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
-  cell2 = numberRow.insertCell(1);  cell2.align = 'right';
-  sendMessage = document.createElement('button');  sendMessage.innerHTML = '<b>Send Message</b>';
-  sendMessage.onclick = function(){
-    dialog1.dialog( "open" );
-  };
-  cell2.append(sendMessage);
-  
   numberRow.style.height= "15px";
 
   var profilecell = groupTable.insertRow(groupTable.rows.length).insertCell(0);
@@ -280,15 +254,13 @@ function gotData(data){
  var key = Object.keys(val);
   for (var i=0; i<key.length; i++){
       var k= key[i];
-      if('myroom' in val[k] == false)  groups.push(val[k]);
+      if('myroom' in val[k])  groups.push(val[k]);
     }
   console.log(groups);
   findgroup();
 }
 
 saveData();
-restaurantName();
-bindEvents();
 
 function saveData(){
   firebaseConfig = {
@@ -308,7 +280,7 @@ function saveData(){
 
   database = firebase.database();
   ref = database.ref('restaurant_name');
-  ref.on('value', gotData);
   refMy = database.ref('my room');
+  refMy.on('value', gotData);
 }
 });
