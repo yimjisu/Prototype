@@ -10,7 +10,18 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script>
-    </head>
+    <style>
+      label, input { display:block; }
+      input.text { margin-bottom:12px; width:95%; padding: .4em; }
+      fieldset { padding:0; border:0; margin-top:25px; }
+      h1 { font-size: 1.2em; margin: .6em 0; }
+      div#users-contain { width: 350px; margin: 20px 0; }
+      div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+      div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+      .ui-dialog .ui-state-error { padding: .3em; }
+      .restaurant-name { border: 1px solid transparent; padding: 0.3em; }
+    </style>  
+  </head>
 
   <body>
     <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
@@ -19,6 +30,103 @@
         font-family: 'Baloo Thambi 2', cursive;
       }
     </style>
+    <script>
+      $( function() {
+        var dialog, form,
+     
+          // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+          name = $( "#name" ),
+          email = $( "#email" ),
+          password = $( "#password" ),
+          allFields = $( [] ).add( name ).add( email ).add( password ),
+          tips = $( ".validateTips" );
+     
+        function updateTips( t ) {
+          tips
+            .text( t )
+            .addClass( "ui-state-highlight" );
+          setTimeout(function() {
+            tips.removeClass( "ui-state-highlight", 1500 );
+          }, 500 );
+        }
+        
+        function checkRegexp( o, regexp, n ) {
+          if ( !( regexp.test( o.val() ) ) ) {
+            o.addClass( "ui-state-error" );
+            updateTips( n );
+            return false;
+          } else {
+            return true;
+          }
+        }
+     
+        function addUser() {
+          allFields.removeClass( "ui-state-error" );
+
+          dialog.dialog( "close" );
+          return true;
+        }
+     
+        dialog = $( "#dialog-form" ).dialog({
+          autoOpen: false,
+          height: 400,
+          width: 350,
+          modal: true,
+          buttons: {
+            "Create Group": addUser,
+            Cancel: function() {
+              dialog.dialog( "close" );
+            }
+          },
+          close: function() {
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+          }
+        });
+     
+        form = dialog.find( "form" ).on( "submit", function( event ) {
+          event.preventDefault();
+          addUser();
+        });
+     
+        $( "#create-group" ).on( "click", function() {
+          name = "Veggie Paradise";
+          dialog.dialog( "open" );
+        });
+      } );
+      </script>
+<div id="dialog-form" title="Create new group">
+<p id = "restaurant-name" class="restaurant-name">Restaurant : Veggie Paradise</p>
+
+<form>
+  <fieldset>
+    <label for="name">Limit number</label>
+    <input type="number" name="name" id="name" value="1" class="text ui-widget-content ui-corner-all">
+    <label for="email">Start Time</label>
+    <input type="datetime-local" name="email" id="email" class="text ui-widget-content ui-corner-all">
+    <label for="email">End Time</label>
+    <input type="datetime-local" name="end-date" id="end-date" class="text ui-widget-content ui-corner-all">
+    <label for="password">Comment</label>
+    <input type="text" name="password" id="password" value="Enjoy meal with us!" class="text ui-widget-content ui-corner-all">
+
+    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+  </fieldset>
+</form>
+</div>
+
+<div id="message-form" title="Send Message">
+  <p id = "restaurant-name" class="restaurant-name">Restaurant : Veggie Paradise</p>
+  
+  <form>
+    <fieldset>
+      <label for="name">Message</label>
+      <input type="text" name="name" id="name" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+  </div>
     <table class = "collapse" id = "table">
         <thead>
           <tr>
@@ -41,14 +149,9 @@
     <table>
       <tr>
       <td id="restaurant_name" style="text-align: left; padding-left: 16%; font-size: large;">Join to a group of</td>
-      <td style="text-align: right; padding-right: 16%; font-size: smaller;"><a href = ./create.html >
-        <style type="text/css">
-          a:link { color: black; text-decoration: none;}
-          a:visited { color: black; text-decoration: none;}
-          a:hover { color: blue; text-decoration: none;}
-          </style>
-      <i class="fas fa-plus-circle"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>
-        Create new group</a></td></tr>
+      <td id="create-group" style="text-align: right; padding-right: 16%; font-size: smaller;">
+      <button><i class="fas fa-plus-circle"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>
+        <b>Create new group</b></button></td></tr>
         </table>
     <table id = "group table">
     </table>

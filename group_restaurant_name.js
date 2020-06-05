@@ -59,7 +59,7 @@ function findgroup(){
   cell2 = numberRow.insertCell(1);  cell2.align = 'right';
   sendMessage = document.createElement('button');  sendMessage.innerHTML = '<b>Send Message</b>';
   sendMessage.onclick = function(){
-    message();
+    dialog1.dialog( "open" );
   };
   cell2.append(sendMessage);
   
@@ -75,7 +75,7 @@ function findgroup(){
     var cell = document.createElement('tr');
     seeProfile = document.createElement('button');
     seeProfile.innerHTML = '<b>See Profile</b>';
-    imgSrc = '<img src= "'+user['img']+'" height = "20"></img>';
+    imgSrc = '<div class="crop"><img src= "'+user['img']+'" height = "20"></img></div>';
     cell1 = cell.insertCell(0); cell1.innerHTML = imgSrc;
     cell2 = cell.insertCell(1); cell2.innerHTML = user['name']; cell2.style.fontSize = "15px"; cell2.align = 'left';
     cell3 = cell.insertCell(2); cell3.append(seeProfile); cell3.align = 'right';
@@ -105,32 +105,7 @@ function findgroup(){
   var groupCell = groupRow.insertCell(j%3);
   groupCell.colSpan = "2";
   groupCell.append(groupTable);
-  buttonStyle();
   }}
-}
-
-function buttonStyle(){
-  var btns = document.getElementsByTagName('button');
-  for(var i=0; i<btns.length; i++){
-    var btn = btns[i];
-    btn.style.backgroundColor = '#FFF';
-    btn.style.borderStyle = 'solid';
-    btn.style.borderWidth = '1.5px';
-    btn.style.borderRadius = '20px';
-    btn.style.borderColor = '#173143';
-    btn.style.fontSize = '10px';
-    btn.style.color = '#173143';
-    btn.style.marginBottom = '5px';
-    btn.style.fontFamily = "'Baloo Thambi 2', cursive";
-  }
-}
-
-function createGroup(){
-
-}
-
-function message(table){
-  console.log("send message");
 }
 
 function gotData(data){
@@ -139,6 +114,63 @@ function gotData(data){
 
   }
 }
+
+var dialog, form,
+     
+  // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+name = $( "#name" ),
+email = $( "#email" ),
+password = $( "#password" ),
+allFields = $( [] ).add( name ).add( email ).add( password ),
+tips = $( ".validateTips" );
+
+function updateTips( t ) {
+  tips
+    .text( t )
+    .addClass( "ui-state-highlight" );
+  setTimeout(function() {
+    tips.removeClass( "ui-state-highlight", 1500 );
+  }, 500 );
+}
+
+function checkRegexp( o, regexp, n ) {
+  if ( !( regexp.test( o.val() ) ) ) {
+    o.addClass( "ui-state-error" );
+    updateTips( n );
+    return false;
+  } else {
+    return true;
+  }
+}
+     
+function sendMessage() {
+  allFields.removeClass( "ui-state-error" );
+  dialog1.dialog( "close" );
+  return true;
+}
+
+dialog1 = $( "#message-form" ).dialog({
+  autoOpen: false,
+  height: 400,
+  width: 350,
+  modal: true,
+  buttons: {
+    "Send": sendMessage,
+    Cancel: function() {
+      dialog.dialog( "close" );
+    }
+  },
+  close: function() {
+    form[ 0 ].reset();
+    allFields.removeClass( "ui-state-error" );
+  }
+});
+
+form = dialog1.find( "form" ).on( "submit", function( event ) {
+  event.preventDefault();
+  sendMessage();
+});
+
 restaurantName();
 bindEvents();
 findgroup();
