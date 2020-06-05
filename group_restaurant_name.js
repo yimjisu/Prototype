@@ -4,31 +4,20 @@
 $( document ).ready(function() {
   var userName = "User";
   var userImg = "https://image.flaticon.com/icons/png/512/272/272075.png";
-  var Name = "Veggie Paradise";
   var groups = [];
 var restaurant = document.getElementById("restaurant");
 var season = document.getElementById("season");
+var restaurantName = "Veggie Paradise";
 
 $(restaurant).css("background-color", "#2BC78C");
-function bindEvents(){
-  restaurant.onclick = function(){
-    $(this).css("background-color", "#2BC78C");
-    $(season).css("background-color", "#8FECC9");
-    restaurant();
-  }
-  season.onclick = function(){
-    $(this).css("background-color", "#2BC78C");
-    $(restaurant).css("background-color", "#8FECC9");
-    season();
-  }
-}
 
-function restaurantName(){
-  var name = "Veggie Paradise";
+var groupNumber = 0;
+function setrestaurantName(){
   var cell = document.getElementById('restaurant_name');
-  cell.innerText += ' '+name;
+  cell.innerText += ' '+restaurantName;
   cell.style.fontWeight = 'bold';
 }
+
 function findgroup(){
   var table = document.getElementById('group table');
   var numRows =table.rows.length;
@@ -67,7 +56,10 @@ function findgroup(){
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
   cell2 = numberRow.insertCell(1);  cell2.align = 'right';
   sendMessage = document.createElement('button');  sendMessage.innerHTML = '<b>Send Message</b>';
+  sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
   sendMessage.onclick = function(){
+    
+    $("#sendtogroup")[0].innerText = "Group : "+$(this)[0].id;
     dialog1.dialog( "open" );
   };
   cell2.append(sendMessage);
@@ -176,6 +168,7 @@ var dialog, form,
      
 // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
 num = $( "#num" ),
+date = $("#date"),
 start = $("#start"),
 end = $( "#end" ),
 comment = $( "#comment" ),
@@ -211,25 +204,24 @@ function addUser() {
       updateTips( "Number has to be over 1" );
       return false;
     }
+    d = date.val();
     stime = start.val();
     etime = end.val();
+    if(!d){
+      d.addClass( "ui-state-error" );
+      updateTips( "Fill the date" );
+      return false;
+    }
     if(!stime){
       start.addClass( "ui-state-error" );
-      updateTips( "Fill the date" );
+      updateTips( "Fill the time" );
       return false;
     }
     if(!etime){
       end.addClass( "ui-state-error" );
-      updateTips( "Fill the date" );
+      updateTips( "Fill the time" );
       return false;
     }
-    if(stime.substring(0, 11) != etime.substring(0, 11)){
-      end.addClass( "ui-state-error" );
-      updateTips( "Start date and end date should be same" );
-      return false;
-    }
-    console.log(parseInt(num));
-    stime = stime.replace('T', ' ').replace('-', '.').replace('-', '.');
     data = {
     'restaurant': Name,
     'myroom': true,
@@ -238,7 +230,7 @@ function addUser() {
       'img' : userImg}],
     'number': {'current': 1, 
     'expected': parseInt(numVal)},
-    'date' : stime+'~'+etime.substring(11)
+    'date' : d+' '+stime+'~'+etime
     }
     ref.push(data);
     refMy.push(data);
@@ -287,8 +279,7 @@ function gotData(data){
 }
 
 saveData();
-restaurantName();
-bindEvents();
+setrestaurantName();
 
 function saveData(){
   firebaseConfig = {

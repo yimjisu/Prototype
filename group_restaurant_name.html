@@ -9,18 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script>
-    <style>
-      label, input { display:block; }
-      input.text { margin-bottom:12px; width:95%; padding: .4em; }
-      fieldset { padding:0; border:0; margin-top:25px; }
-      h1 { font-size: 1.2em; margin: .6em 0; }
-      div#users-contain { width: 350px; margin: 20px 0; }
-      div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-      div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-      .ui-dialog .ui-state-error { padding: .3em; }
-      .restaurant-name { border: 1px solid transparent; padding: 0.3em; }
-    </style>  
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script> 
   </head>
 
   <body>
@@ -30,16 +19,18 @@
         font-family: 'Baloo Thambi 2', cursive;
       }
     </style>
-<div id="dialog-form" title="Create new group">
+<div id="dialog-form" title="Create new group" class='form'>
   <p class="validateTips">All form fields are required.</p>
 <form>
   <fieldset>
     <label for="num">Limit number</label>
-    <input type="number" name="num" id="num" value="1" class="text ui-widget-content ui-corner-all">
+    <input type="number" name="num" id="num" value="2" class="text ui-widget-content ui-corner-all">
+    <label for="start">Date</label>
+    <input type="date" name="date" id="date" class="text ui-widget-content ui-corner-all">
     <label for="start">Start Time</label>
-    <input type="datetime-local" name="start" id="start" class="text ui-widget-content ui-corner-all">
+    <input type="time" name="start" id="start" class="text ui-widget-content ui-corner-all">
     <label for="end">End Time</label>
-    <input type="datetime-local" name="end" id="end" class="text ui-widget-content ui-corner-all">
+    <input type="time" name="end" id="end" class="text ui-widget-content ui-corner-all">
     <label for="comment">Comment</label>
     <input type="text" name="comment" id="comment" value="Enjoy meal with us!" class="text ui-widget-content ui-corner-all">
 
@@ -49,8 +40,8 @@
 </form>
 </div>
 
-<div id="message-form" title="Send Message">
-  <p class="validateTips">All form fields are required.</p>
+<div id="message-form" title="Send Message" class='form'>
+  <div id="sendtogroup" class="sendtogroup">Sending to Group #</div>
   <form>
     <fieldset>
       <label for="name">Message</label>
@@ -62,9 +53,15 @@
   </div>
     <table class = "collapse" id = "table">
         <thead>
-          <tr>
+           <tr>
             <th style="width: 30%" class = "menu" id="restaurant">
-              <strong>Restaurant</strong>
+              <a href = ./restaurant.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: blue; text-decoration: none;}
+                 </style>
+              Restaurant</a></th>
             </th>
             <th style="width: 30%" class = "menu" id="season">
               <a href = ./season.html>
@@ -75,7 +72,7 @@
                  </style>
               Season Recommendation</a></th>
             <th style="width: 10%"></th>
-            <th style="width: 30%" class = "menu" id="mypage"><a href = ./myroom.html>
+            <th style="width: 30%" class = "menu" id="myroom"><a href = ./myroom.html>
               <style type="text/css">
                 a:link { color: black; text-decoration: none;}
                 a:visited { color: black; text-decoration: none;}

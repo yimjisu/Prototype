@@ -4,22 +4,18 @@
 $( document ).ready(function() {
 var restaurant = document.getElementById("restaurant");
 var season = document.getElementById("season");
+var userName = "User";
+var userImg = "https://image.flaticon.com/icons/png/512/272/272075.png";
+var restaurantName = "Veggie Paradise";
+var groups = [];
 $(restaurant).css("background-color", "#2BC78C");
-function bindEvents(){
-  restaurant.onclick = function(){
-    $(this).css("background-color", "#2BC78C");
-    $(season).css("background-color", "#8FECC9");
-    restaurant();
-  }
-  season.onclick = function(){
-    $(this).css("background-color", "#2BC78C");
-    $(restaurant).css("background-color", "#8FECC9");
-    season();
-  }
-}
-
 function findgroup(){
   var table = document.getElementById('grouptable');
+  var numRows =table.rows.length;
+  console.log(table.rows.length, groups);
+  for(var i=0; i<numRows-2 ;i++){
+    table.deleteRow(1);
+  }
   for (var j=0; j<2; j++){
     group = groups[j];
   var profile = group['profile'];
@@ -52,7 +48,9 @@ function findgroup(){
   cell2.align = 'right';
   sendMessage = document.createElement('button');
   sendMessage.innerHTML = '<b>Send Message</b>';
-  sendMessage.onclick = function(){
+  sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
+  sendMessage.onclick = function(){    
+    $("#sendtogroup")[0].innerText = "Group : "+$(this)[0].id;
     dialog1.dialog( "open" );
   };
   cell2.append(sendMessage);
@@ -113,12 +111,6 @@ function findgroup(){
 }
 }
 
-function createGroup(){
-
-}
-
-function message(table){
-}
 function gotData(data){
   var val = data.val();
   if(val){
@@ -126,8 +118,21 @@ function gotData(data){
   }
 }
 
-bindEvents();
-findgroup();
+saveData();
+
+var ref, refMy;
+
+function gotData(data){
+  groups = [];
+  var val = data.val();
+ var key = Object.keys(val);
+  for (var i=0; i<key.length; i++){
+      var k= key[i];
+      if('myroom' in val[k] == false)  groups.push(val[k]);
+    }
+  console.log(groups);
+  findgroup();
+}
 
 function saveData(){
   firebaseConfig = {
@@ -147,6 +152,8 @@ function saveData(){
 
   database = firebase.database();
   ref = database.ref('restaurant_name');
+  ref.on('value', gotData);
+  refMy = database.ref('my room');
 }
 
 var dialog, form,
@@ -203,6 +210,106 @@ dialog1 = $( "#message-form" ).dialog({
 form = dialog1.find( "form" ).on( "submit", function( event ) {
   event.preventDefault();
   send();
+});
+
+var dialog, form,
+     
+// From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+num = $( "#num" ),
+dates = $("#date"),
+start = $("#start"),
+end = $( "#end" ),
+comment = $( "#comment" ),
+allFields = $( [] ).add( num ).add( start ).add(end).add( comment ),
+tips = $( ".validateTips" );
+
+function updateTips( t ) {
+  console.log(tips);
+tips
+  .text( t )
+  .addClass( "ui-state-highlight" );
+setTimeout(function() {
+  tips.removeClass( "ui-state-highlight", 1500 );
+}, 500 );
+}
+
+function checkRegexp( o, regexp, n ) {
+if ( !( regexp.test( o.val() ) ) ) {
+  o.addClass( "ui-state-error" );
+  updateTips( n );
+  return false;
+} else {
+  return true;
+}
+}
+
+function addUser() {
+    allFields.removeClass( "ui-state-error" );
+    console.log(start.val());
+    numVal = num.val();
+    if(numVal < 2){
+      num.addClass( "ui-state-error" );
+      updateTips( "Number has to be over 1" );
+      return false;
+    }
+    date = dates.val();
+    stime = start.val();
+    etime = end.val();
+    if(!date){
+      dates.addClass( "ui-state-error" );
+      updateTips( "Fill the date" );
+      return false;
+    }
+    if(!stime){
+      start.addClass( "ui-state-error" );
+      updateTips( "Fill the time" );
+      return false;
+    }
+    if(!etime){
+      end.addClass( "ui-state-error" );
+      updateTips( "Fill the time" );
+      return false;
+    }
+    console.log(parseInt(num));
+    data = {
+    'restaurant': restaurantName,
+    'myroom': true,
+    'profile': [{'name': userName,
+      'comment': comment.val(),
+      'img' : userImg}],
+    'number': {'current': 1, 
+    'expected': parseInt(numVal)},
+    'date' : date+' '+stime+'~'+etime
+    }
+    ref.push(data);
+    refMy.push(data);
+    dialog.dialog( "close" );
+    return true;
+}
+dialog = $( "#dialog-form" ).dialog({
+autoOpen: false,
+height: 400,
+width: 350,
+modal: true,
+buttons: {
+  "Create Group": addUser,
+  Cancel: function() {
+    dialog.dialog( "close" );
+  }
+},
+close: function() {
+  form[ 0 ].reset();
+  allFields.removeClass( "ui-state-error" );
+}
+});
+
+form = dialog.find( "form" ).on( "submit", function( event ) {
+event.preventDefault();
+addUser();
+});
+
+$( "#create-group" ).on( "click", function() {
+dialog.dialog( "open" );
 });
 
 });

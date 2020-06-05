@@ -26,6 +26,7 @@ function findgroup(){
   var profile = group['profile'];
   var number = group['number'];
   var date = group['date'];
+  var restaurantName = group['restaurant'];
   var groupTable = document.createElement("table");
   groupTable.style.backgroundColor = "#E7FDF5"; groupTable.style.padding = "10px"; groupTable.style.height = "300px"; groupTable.style.alignContent = "flex-start";
   groupTable.style.borderRadius = '10px'; groupTable.style.width = "350px";
@@ -46,6 +47,8 @@ function findgroup(){
   cell1.innerHTML += '  '+number['current']+'/'+number['expected'];
   cell1.style.fontSize = "12px";  cell1.style.letterSpacing = '5px';
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
+  cell2 = numberRow.insertCell(1);
+  cell2.innerText = restaurantName;
   numberRow.style.height= "15px";
 
   var profilecell = groupTable.insertRow(groupTable.rows.length).insertCell(0);
@@ -150,6 +153,7 @@ var dialog, form,
      
 // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
 num = $( "#num" ),
+dates = $("#date"),
 start = $("#start"),
 end = $( "#end" ),
 comment = $( "#comment" ),
@@ -185,25 +189,25 @@ function addUser() {
       updateTips( "Number has to be over 1" );
       return false;
     }
+    date = dates.val();
     stime = start.val();
     etime = end.val();
+    if(!date){
+      dates.addClass( "ui-state-error" );
+      updateTips( "Fill the date" );
+      return false;
+    }
     if(!stime){
       start.addClass( "ui-state-error" );
-      updateTips( "Fill the date" );
+      updateTips( "Fill the time" );
       return false;
     }
     if(!etime){
       end.addClass( "ui-state-error" );
-      updateTips( "Fill the date" );
-      return false;
-    }
-    if(stime.substring(0, 11) != etime.substring(0, 11)){
-      end.addClass( "ui-state-error" );
-      updateTips( "Start date and end date should be same" );
+      updateTips( "Fill the time" );
       return false;
     }
     console.log(parseInt(num));
-    stime = stime.replace('T', ' ').replace('-', '.').replace('-', '.');
     data = {
     'restaurant': Name,
     'myroom': true,
@@ -212,14 +216,13 @@ function addUser() {
       'img' : userImg}],
     'number': {'current': 1, 
     'expected': parseInt(numVal)},
-    'date' : stime+'~'+etime.substring(11)
+    'date' : date+' '+stime+'~'+etime
     }
     ref.push(data);
     refMy.push(data);
     dialog.dialog( "close" );
     return true;
 }
-
 dialog = $( "#dialog-form" ).dialog({
 autoOpen: false,
 height: 400,
