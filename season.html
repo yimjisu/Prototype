@@ -1,11 +1,12 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <title>Design Project</title>
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  <link href="./capital_game.css" rel="stylesheet" />
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="./season.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
@@ -13,25 +14,152 @@
     </head>
 
   <body>
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
-    <style>
-      body{
-        font-family: 'Baloo Thambi 2', cursive;
-      }
-    </style>
     <table class = "collapse" id = "table">
         <thead>
-          <tr>
-            <th style="width: 25%" class = "menu" id="restaurant">Restaurant</th>
-            <th style="width: 25%" class = "menu" id="season">Season Recommendation</th>
-            <th style="width: 25%"></th>
-            <th style="width: 25%" class = "menu" id="mypage">My Page</th>
+          <tr style="background-color:#8FECC9">
+            <th style="width: 30%" class = "menu" id="restaurant">
+              <a href = ./index.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: mediumblue; text-decoration: none;}
+                 </style>Restaurant</a></th>
+            <th style="width: 30%" class = "menu" id="season">Season Recommendation</th>
+            <th style="width: 30%" class = "menu" id="mypage">My Page</th>
           </tr>
         </thead>
     </table>
-    
+
+    <!--Months-->
+    <div class="months">
+      <div id="month1">APRIL 2020</div>
+      <div id="prev_month" style="color:grey; padding:20px;">&#9664</div>
+      <div id="month2">MAY 2020</div>
+      <div id="next_month" style="color:grey; padding:20px;">&#9654</div>
+      <div id="month3">JUNE 2020</div>
+    </div>
+
+    <div class="title">RECOMMENDATIONS</div>
+    <table class="recommendations" cellspacing="50">
+      <tr>
+        <td><label><div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/3_types_of_lentil.png/300px-3_types_of_lentil.png" width="70" height="60"></div>
+          <div><input type="checkbox" id="Lentils">&#160; Lentils</input></div></label></td>
+        <td><label><div><img src="https://media.cdnws.com/_i/48378/4027/2901/27/quinoa-blanc-detail.jpeg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Quinoa">&#160; Quinoa</input></div></label></td>
+        <td><label><div><img src="https://fr.chatelaine.com/wp-content/uploads/2008/09/penne-tofu-legumes-9941.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Tofu">&#160; Tofu</input></div></label></td>
+        <td><label><div><img src="https://static.mediapart.fr/etmagine/default/files/media_437483/Tomates.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Tomato">&#160; Tomato</input></div></label></td>
+        <td><label><div><img src="https://static1.squarespace.com/static/565879a5e4b06edc0aca642f/56588a1be4b06edc0acaf4fa/5cb0ab5f7817f774c6709c8a/1555354264796/spinach-web.jpg?format=1500w" width="70" height="60"></div>
+          <div><input type="checkbox" id="Spinach">&#160; Spinach</input></div></label></td>
+        <td><label><div><img src="https://sodelish.ca/wp-content/uploads/2019/09/1f927a512a9909833c7b57ab40062fc5.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Fennel">&#160; Fennel</input></div></label></td>
+      </tr>
+
+    </table>
+
+
+    <div class="title">VEGETABLES</div>
+    <table class="recommendations" cellspacing="50">
+    <tr>
+      <td><label><div><img src="https://www.producemarketguide.com/sites/default/files/Commodities.tar/Commodities/artichokes_commodity-page.png" width="70" height="60"></div>
+          <div><input type="checkbox" id="Artichoke">&#160; Artichoke</input></div></label>
+        </td>
+        <td><label><div><img src="https://www.coopathome.ch/img/produkte/880_880/RGB/4488400_001.jpg?_=1589153512582" width="70" height="60"></div>
+          <div><input type="checkbox" id="Aspargus">&#160; Aspargus</input></div></label>
+        </td>
+        <td><label><div><img src="https://www.regal.fr/sites/art-de-vivre/files/r34_feve_ss.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Bean">&#160; Bean</input></div></label>
+        </td>
+        <td><label><div><img src="https://cf.shopee.ph/file/fb9ac15aae8a428a8b323efc95ed8b9d" width="70" height="60"></div>
+          <div><input type="checkbox" id="Beet">&#160; Beet</input></div></label>
+        </td>
+        <td><label><div><img src="https://www.health.harvard.edu/media/content/images/p7_Cauliflower_HH1810_gi887543438.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Cauliflower">&#160; Cauliflower</input></div></label>
+        </td>
+        <td><label><div><img src="https://www.lesfruitsetlegumesfrais.com/_upload/cache/ressources/produits/courgette/courgette_346_346_filled.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Courgette">&#160; Courgette</input></div></label>
+        </td>
+        <td><label><div><img src="https://freshpoint.com/wp-content/uploads/2020/02/freshpoint-english-cucumber-scaled.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Cucumber">&#160; Cucumber</input></div></label>
+        </td>
+        <td><label><div><img src="https://sodelish.ca/wp-content/uploads/2019/09/1f927a512a9909833c7b57ab40062fc5.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Fennel">&#160; Fennel</input></div></label>
+        </td>
+        <td><label><div><img src="https://hollandfoodtrade.com/wp-content/uploads/2018/01/Leek-Holland_Food_Trade.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Leek">&#160; Leek</input></div></label>
+        </td></tr>
+        <tr id="more"><td><label><div><img src="https://images-na.ssl-images-amazon.com/images/I/41CGtIyWgML._AC_.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Lettuce">&#160; Lettuce</input></div></label>
+        </td>
+        <td><label><div><img src="https://cleananddelicious.com/wp-content/uploads/2015/12/Mushroom640-1.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Mushroom">&#160; Mushroom</input></div></label>
+        </td>
+        <td><label><div><img src="https://rukminim1.flixcart.com/image/352/352/jtsz3bk0/vegetable/b/8/4/2-potato-un-branded-no-whole-original-imafdsymh2aepaph.jpeg?q=70" width="70" height="60"></div>
+          <div><input type="checkbox" id="Potato">&#160; Potato</input></div></label>
+        </td>
+        <td><label><div><img src="https://pcdn.columbian.com/wp-content/uploads/2019/05/0531_met_radishes-1226x0-c-default.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Radish">&#160; Radish</input></div></label>
+        </td>
+        <td><label><div><img src="https://static1.squarespace.com/static/565879a5e4b06edc0aca642f/56588a1be4b06edc0acaf4fa/5cb0ab5f7817f774c6709c8a/1555354264796/spinach-web.jpg?format=1500w" width="70" height="60"></div>
+          <div><input type="checkbox" id="Spinach">&#160; Spinach</input></div></label>
+        </td>
+        <td><label><div><img src="https://5.imimg.com/data5/IP/TH/MY-30125612/fresh-turnip-500x500.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Turnip">&#160; Turnip</input></div></label>
+        </td>
+       </tr>
+      </table>
+      <div style="padding-left:150px; padding-bottom: 50px;"><button id="show_more" class="btn_more">Show more</button></div>
+
+
+
+
+
+
+    <div class="title">FRUITS</div>
+    <table class="recommendations" cellspacing="50">
+    <tr>
+      <td><label><div><img src="https://i.pinimg.com/originals/f0/4a/2d/f04a2da079c9b9ef8b73be7389446f43.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Apple">&#160; Apple</input></div></label>
+        </td>
+        <td><label><div><img src="https://www.coopathome.ch/img/produkte/880_880/RGB/6495669_001.jpg?_=1586841378178" width="70" height="60"></div>
+          <div><input type="checkbox" id="Banana">&#160; Banana</input></div></label>
+        </td>
+        <td><label><div><img src="https://bourse-dz.com/wp-content/uploads/2017/06/cerise_0.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Cherry">&#160; Cherry</input></div></label>
+        </td>
+        <td><label><div><img src="https://cdn.shopify.com/s/files/1/2336/3219/products/shutterstock_336818993meyer_x850.jpg?v=1554665742" width="70" height="60"></div>
+          <div><input type="checkbox" id="Lemon">&#160; Lemon</input></div></label>
+        </td>
+        <td><label><div><img src="https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Mango">&#160; Mango</input></div></label>
+        </td>
+        <td><label><div><img src="https://produits.bienmanger.com/34889-0w470h470_Nefles_Japon_Bio.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Medlar">&#160; Medlar</input></div></label>
+        </td>
+        <td><label><div><img src="https://ofrais.ma/rabat/wp-content/uploads/2020/01/orange.jpeg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Orange">&#160; Orange</input></div></label>
+        </td>
+        <td><label><div><img src="https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/4l/ananas2.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Pineapple">&#160; Pineapple</input></div></label>
+        </td>
+        <td><label><div><img src="https://produits.bienmanger.com/33283-0w600h600_Pomelos_Frais_Bio_Variete_Star_Ruby.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Pomelo">&#160; Pomelo</input></div></label>
+        </td></tr>
+        <tr id="more2"><td><label><div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9CPLur7LCXVV98fl23HhwKhiwnM8duLftxLHIglE5aS4Mej4F&usqp=CAU" width="70" height="60"></div>
+          <div><input type="checkbox" id="Rhubarb">&#160; Rhubarb</input></div></label>
+        </td>
+        <td><label><div><img src="https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-strawberrie-558x600.jpg" width="70" height="60"></div>
+          <div><input type="checkbox" id="Strawberry">&#160; Strawberry</input></div></label>
+        </td></tr></td></table>
+    </tr>
+    <div style="padding-left:150px; padding-bottom: 50px;"><button id="show_more2" class="btn_more">Show more</button></div>
+
+
+    <div class="center" style="padding-bottom:20px;"><button id="select">SELECT</button></div>
+
     <script src="jquery/js/jquery-1.9.0.min.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="./capital_game.js"></script>
+    <script src="./season.js"></script>
   </body>
 </html>
