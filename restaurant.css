@@ -1,0 +1,375 @@
+.restaurant {
+        display: block;
+        position: absolute;
+        box-sizing: content-box;
+        opacity: 1;
+        margin-top: 40px;
+        overflow-x: auto;
+        overflow-y: auto;
+        background-color: rgba(255, 255, 255, 1);
+        width: 1515.00px;
+        height: 980.00px;
+        left: 0px;
+        top: 0px;
+}
+    
+    
+    
+.restaurant .left_layout {
+          position: absolute;
+          box-sizing: content-box;
+          opacity: 0.3;
+          background-color: rgba(83, 236, 179, 0.4);
+          border-bottom-color: rgba(112, 112, 112, 1);
+          border-bottom-width: 1.00px;
+          border-left-color: rgba(112, 112, 112, 1);
+          border-left-width: 1.00px;
+          border-right-color: rgba(112, 112, 112, 1);
+          border-right-width: 1.00px;
+          border-top-color: rgba(112, 112, 112, 1);
+          border-top-width: 1.00px;
+          width: 1515.00px;
+          height: 980.00px;
+}
+
+.restaurant .filters {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      font-family: 'Tangerine', serif;
+      color: rgba(23, 49, 67, 1);
+      font-size: 28.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 150.00px;
+      height: 35.00px;
+      left: 700.00px;
+      top: 30.00px;
+      
+}
+
+.restaurant .search {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 0.9;
+      background-color: rgba(255, 255, 255, 1);
+      border-bottom-color: rgba(112, 112, 112, 1);
+      border-bottom-width: 1.00px;
+      border-left-color: rgba(112, 112, 112, 1);
+      border-left-width: 1.00px;
+      border-right-color: rgba(112, 112, 112, 1);
+      border-right-width: 1.00px;
+      border-top-color: rgba(112, 112, 112, 1);
+      border-top-width: 1.00px;
+      border-top-left-radius: 18.00px;
+      border-top-right-radius: 18.00px;
+      border-bottom-left-radius: 18.00px;
+      border-bottom-right-radius: 18.00px;
+      width: 285.00px;
+      height: 36.00px;
+      left: 590.00px;
+      top: 80.00px;
+}
+
+.restaurant .iconOpenMagnifyingGlass_restaurant {
+      position: absolute;
+      box-sizing: content-box;
+      -ms-transform: rotate(95.00deg);
+      -webkit-transform: rotate(95.00deg);
+      transform: rotate(95.00deg);
+      opacity: 0.4;
+      fill: rgba(0, 0, 0, 1);
+      width: 20.36px;
+      height: 20.75px;
+      left: 598.00px;
+      top: 89.00px;
+}
+
+.restaurant .category {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      color: rgba(23, 49, 67, 1);
+      font-size: 25.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 112.00px;
+      height: 31.00px;
+      left: 700.00px;
+      top: 150.00px;
+}
+
+.restaurant .Vegetarian {
+      position: absolute;
+      box-sizing: border-box;
+      width: 26.00px;
+      height: 25.00px;
+      left: 390.00px;
+      top: 200.00px;
+}
+.restaurant .vegetarian {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      letter-spacing: 0.00px;
+      color: rgba(23, 49, 67, 1);
+      font-size: 20.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 107.00px;
+      height: 25.00px;
+      left: 420.00px;
+      top: 199.00px;
+}
+
+.restaurant .Vegan {
+    position: absolute;
+    box-sizing: border-box;
+    width: 26.00px;
+    height: 25.00px;
+    left: 570.00px;
+    top: 200.00px;
+}
+
+.restaurant .vegan {
+    position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      color: rgba(23, 49, 67, 1);
+      font-size: 20.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 62.00px;
+      height: 25.00px;
+      left: 600.00px;
+      top: 199.00px;
+
+}
+
+.restaurant .NutFree {
+    position: absolute;
+    box-sizing: border-box;
+    width: 26.00px;
+    height: 25.00px;
+    left: 720.00px;
+    top: 200.00px;
+}
+
+.restaurant .nutFree {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      letter-spacing: 0.00px;
+      color: rgba(23, 49, 67, 1);
+      font-size: 20.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 88.00px;
+      height: 25.00px;
+      left: 750.00px;
+      top: 199.00px;
+}
+
+.restaurant .Lacto {
+    position: absolute;
+    box-sizing: border-box;
+    width: 26.00px;
+    height: 25.00px;
+    left: 890.00px;
+    top: 200.00px;
+}
+    
+.restaurant .lacto {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      color: rgba(23, 49, 67, 1);
+      font-size: 20.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 54.00px;
+      height: 25.00px;
+      left: 920.00px;
+      top: 199.00px;
+}   
+
+.restaurant .Ovo {
+    position: absolute;
+    box-sizing: border-box;
+    width: 26.00px;
+    height: 25.00px;
+    left: 1040.00px;
+    top: 200.00px;
+}
+
+.restaurant .ovo {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      color: rgba(23, 49, 67, 1);
+      font-size: 20.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 39.00px;
+      height: 25.00px;
+      left: 1070.00px;
+      top: 199.00px;
+}   
+
+.restaurant .location {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      color: rgba(23, 49, 67, 1);
+      font-size: 25.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 104.00px;
+      height: 31.00px;
+      left: 700.00px;
+      top: 250.00px;
+}
+
+.restaurant .location_search {
+    position: absolute;
+    box-sizing: content-box;
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(112, 112, 112, 1);
+    border-bottom-width: 1.00px;
+    border-left-color: rgba(112, 112, 112, 1);
+    border-left-width: 1.00px;
+    border-right-color: rgba(112, 112, 112, 1);
+    border-right-width: 1.00px;
+    border-top-color: rgba(112, 112, 112, 1);
+    border-top-width: 1.00px;
+    border-top-left-radius: 18.00px;
+    border-top-right-radius: 18.00px;
+    border-bottom-left-radius: 18.00px;
+    border-bottom-right-radius: 18.00px;
+    width: 285.00px;
+    height: 25.00px;
+    left: 590.00px;
+    top: 300.00px;
+}
+
+.restaurant .confirm{
+    position: absolute;
+    box-sizing: content-box;
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(112, 112, 112, 1);
+    border-bottom-width: 1.00px;
+    border-left-color: rgba(112, 112, 112, 1);
+    border-left-width: 1.00px;
+    border-right-color: rgba(112, 112, 112, 1);
+    border-right-width: 1.00px;
+    border-top-color: rgba(112, 112, 112, 1);
+    border-top-width: 1.00px;
+    /* border-top-left-radius: 18.00px; */
+    border-top-right-radius: 18.00px;
+    /* border-bottom-left-radius: 18.00px; */
+    border-bottom-right-radius: 18.00px;
+    width: 45.00px;
+    height: 25.00px;
+    left: 857.00px;
+    top: 300.00px;
+}
+
+.restaurant .iconOpenMagnifyingGlass_location {
+    position: absolute;
+    box-sizing: content-box;
+    -ms-transform: rotate(95.00deg);
+    -webkit-transform: rotate(95.00deg);
+    transform: rotate(95.00deg);
+    opacity: 0.4;
+    fill: rgba(0, 0, 0, 1);
+    width: 20.36px;
+    height: 20.75px;
+    left: 598.00px;
+    top: 303.00px;
+}
+
+.restaurant input {
+    padding-left: 37px;
+}
+
+.restaurant iframe{
+    position: absolute;
+    box-sizing: content-box;
+    top:360px;
+    left:390px;
+
+}
+
+ 
+.restaurant .priceRange {
+      position: absolute;
+      box-sizing: content-box;
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0);
+      text-align: left;
+      color: rgba(23, 49, 67, 1);
+      font-size: 25.00px;
+      font-weight: 700;
+      font-family: Quicksand, Arial;
+      width: 165.00px;
+      height: 31.00px;
+      left: 700.00px;
+      top: 700.00px;
+}
+
+.restaurant .slider{
+    position: absolute;
+    box-sizing: content-box;
+    opacity: 1;
+    left: 460.00px;
+    top: 700.00px;
+}
+    
+.restaurant .search_confirm{
+    position: absolute;
+    box-sizing: content-box;
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(112, 112, 112, 1);
+    border-bottom-width: 1.00px;
+    border-left-color: rgba(112, 112, 112, 1);
+    border-left-width: 1.00px;
+    border-right-color: rgba(112, 112, 112, 1);
+    border-right-width: 1.00px;
+    border-top-color: rgba(112, 112, 112, 1);
+    border-top-width: 1.00px;
+    border-top-left-radius: 18.00px;
+    border-top-right-radius: 18.00px;
+    border-bottom-left-radius: 18.00px;
+    border-bottom-right-radius: 18.00px;
+    width: 100.00px;
+    height: 25.00px;
+    left: 710.00px;
+    top: 820.00px;
+}
+    
+    
+    
+   
+    
+  
+    
+    
+   
