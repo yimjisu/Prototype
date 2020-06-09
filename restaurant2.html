@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Design Project</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  <link href="./DP4.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script> 
+  </head>
+
+  <body>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
+    <style>
+      body{
+        font-family: 'Baloo Thambi 2', cursive;
+      }
+    </style>
+    
+<div id="dialog-form" title="Create new group">
+  <p class="validateTips">All form fields are required.</p>
+<form>
+  <fieldset>
+    <label for="num">Limit number</label>
+    <input type="number" name="num" id="num" value="2" class="text ui-widget-content ui-corner-all">
+    <label for="start">Date</label>
+    <input type="date" name="date" id="date" class="text ui-widget-content ui-corner-all">
+    <label for="start">Start Time</label>
+    <input type="time" name="start" id="start" class="text ui-widget-content ui-corner-all">
+    <label for="end">End Time</label>
+    <input type="time" name="end" id="end" class="text ui-widget-content ui-corner-all">
+    <label for="comment">Comment</label>
+    <input type="text" name="comment" id="comment" value="Enjoy meal with us!" class="text ui-widget-content ui-corner-all">
+
+    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+  </fieldset>
+</form>
+</div>
+
+<div id="message-form" title="Send Message"  class='form'>
+  <div id="sendtogroup" class="sendtogroup">Sending to Group #</div>
+  <form>
+    <fieldset>
+      <label for="name">Message</label>
+      <input type="text" name="name" id="name" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+  </div>
+    <table class = "collapse" id = "table"  class='form'>
+        <thead>
+           <tr>
+            <th style="width: 30%" class = "menu" id="restaurant">
+              <a href = ./restaurant.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: blue; text-decoration: none;}
+                 </style>
+              Restaurant</a></th>
+            </th>
+            <th style="width: 30%" class = "menu" id="season">
+              <a href = ./season.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: blue; text-decoration: none;}
+                 </style>
+              Season Recommendation</a></th>
+            <th style="width: 10%"></th>
+            <th style="width: 30%" class = "menu" id="myroom"><a href = ./myroom.html>
+              <style type="text/css">
+                a:link { color: black; text-decoration: none;}
+                a:visited { color: black; text-decoration: none;}
+                a:hover { color: blue; text-decoration: none;}
+               </style>
+            My Room</a></th>
+          </tr>
+        </thead>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+            <td style = "width: 75%; text-align: left;padding-left: 350px; padding-top: 30px">
+            <div style="text-align: left; padding-left: 10px; font-size: larger">
+              <h2>
+                <i class="fas fa-crown" style="color:#ffdf00"></i>
+                Top Vegan
+              </h2>
+            </div>            
+            <div style="text-align: left; padding-left: 10px; font-size: larger; display: flex;">
+              <img src="https://cookieandkate.com/images/2017/03/italian-chopped-salad-vegetarian.jpg" alt="Simply Easy Learning" width="80"
+           height="80" style="vertical-align:text-top;">
+              <div style="line-height: 0.5">
+                <h1 style="display: inline; padding-left: 20px; ">
+                   Vegenaran
+                  <span style="color:#ffdf00; font-size: 30px; text-align: top;">
+                  <i class="fas fa-star" ></i>
+                  <i class="fas fa-star" ></i>
+                  <i class="fas fa-star" ></i>
+                  <i class="fas fa-star" > </i>
+                  
+                  726 Reviews
+                  </span>
+                </h1>
+                <h3 style="display: block; padding-left: 10px">
+                  <i class="fas fa-phone-alt" style="padding-left: 10px"></i> 010-25301488  
+                  <i class="fas fa-envelope" style="padding-left: 10px"></i> vegenaran@easydine.com
+                  <span style="padding-left: 10px">
+                     <a href="#" class="fa fa-facebook" style="background: #3B5998;
+                      color: white;   padding:7px;
+                      font-size: 15px;
+                      width: 10px;
+                      text-align: center;
+                      text-decoration: none;
+                    "></a>
+                    <a href="#" class="fa fa-twitter" style="background: #55ACEE;
+                      color: white;   padding: 7px;
+                      font-size: 15px;
+                      width: 14px;
+                      text-align: center;
+                      text-decoration: none;
+                      border-radius: 50%;
+                    "></a>
+                    <a href="#" class="fa fa-instagram" style="background: #125688;
+                      color: white;   padding:6px;
+                      font-size: 15px;
+                      width: 15px;
+                      text-align: center;
+                      text-decoration: none;
+                    "></a>
+                    <i class="fas fa-share-alt"></i>
+                  </span>
+                 
+
+                </h3>
+              </div>
+            </div>
+          <div style="line-height: 0.2">
+            <h3 style="padding-left: 10px">
+              Opening hours: Mon-Sat 11:00 am - 11:00 pm, Sunday Closed
+            </h3>
+            <h4 style="padding-left: 10px; color: red">
+              Price: 6000 ₩ average
+            </h4>
+            <h4 style="padding-left: 10px">
+              <i class="fas fa-map-marker-alt"></i>
+              7 Haeundaehaebyeon-ro 265beon-gi, U-dong, Haeundae-gu, Busan, Korea
+            </h4>
+          </div>
+        <div style="display: flex;">
+          <div>
+            <h3 style="padding-left: 10px; color: rgb(43, 199, 140); display: inline;">
+              726 Comments 
+            </h3>
+          </div>
+          <div style="display: inline; padding-left: 10px;">
+              <i class="fas fa-sort-amount-down"></i> Sort By
+          </div>
+        </div>
+        <br/>
+        <div style="padding-left: 10px; display: inline-flex;">
+          <div style="padding-left: 10px; font-size: 20px">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div style="padding-left: 10px;">
+            
+            <input type="text" value="Type a comment..." id="ip2" style="border-radius: 25px;
+      border: 2px solid rgb(43, 199, 140);
+      padding: 10px; 
+      width: 500px;
+      height: 5px;"/>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div style="padding-left: 10px; width: 90%">
+            <h4> <i class="fas fa-user-circle"></i> <span style="padding-left: 20px">Jonson</span>    <span style="color: gray; padding-left: 20px;"> 05/21/2020  </span></h4>
+            <div style="width: 100%">
+              <p style="padding-left: 20px">Very good place with only vegan dishes of fine quality for a honest price! There are different kinds of things that can please a very wide range of people, so good for large groups! Service was very good as well and the decoration is very nice. It became one of my regular to-go place.</p>
+           </div>
+        </div>
+        </td>
+            <td style= "width:25%" class = "findgroup" id="findgroup">
+                <table class = "grouptable" id="grouptable">
+                  <tr>
+                    <td style="text-align: left; padding-left: 10px; font-size: larger">
+                      <b>Join to a group</b></td>
+                    <td style="text-align: right; font-size: smaller;">
+                      <a href = ./group_restaurant_name.html>
+                        <style type="text/css">
+                          a:link { color: black; text-decoration: none;}
+                          a:visited { color: black; text-decoration: none;}
+                          a:hover { color: blue; text-decoration: none;}
+                         </style>
+                      See More  
+                      <i class="fas fa-arrow-right"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script></a></td></tr>
+                  <tr style="background-color: rgb(167, 245, 216);">
+                    <td id="create-group" colspan="2">
+                      <button>
+                      <i class="fas fa-plus-circle"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>
+                        Create new group</button></td></tr>
+                </table>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="./restaurant_name.js"></script>
+  </body>
+</html>
