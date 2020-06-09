@@ -1,3 +1,8 @@
+body {
+    background-color: #eeeeee;
+    padding : 0px;
+    margin : 0px;
+}
 .restaurant {
         display: block;
         position: absolute;
