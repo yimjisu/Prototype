@@ -46,7 +46,7 @@ function match(search_name){
         return {result:false};
     }
 	return {
-		result: true, category, location, price
+		result: true
 	};
 }
 
@@ -63,7 +63,7 @@ function submit_name(){
 function submit_location(){
     var gl_location = $('#location_name').val();
     db.ref('/location/').push({'location':gl_location});
-    $("iframe").attr('src', googlemap_url + `&q=${gl_location}`+ `&zoom=15`);
+    $("iframe").attr('src', googlemap_url + `&q=${gl_location}`+ `&zoom=17`);
 }
 
 function submit_search(){
