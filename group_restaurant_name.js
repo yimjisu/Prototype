@@ -223,7 +223,7 @@ function addUser() {
       return false;
     }
     data = {
-    'restaurant': Name,
+    'restaurant': restaurantName,
     'myroom': true,
     'profile': [{'name': userName,
       'comment': comment.val(),
