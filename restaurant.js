@@ -53,8 +53,10 @@ function match(search_name){
 function submit_name(){
     var search_name = $("#restaurant_name").val();
     var result = match(search_name);
-    if(result.result){
+    if(result.result && search_name == "Veggie Paradise"){
         $(window).attr('location',"restaurant.html");
+    }else if(result.result && search_name == "Vegenaran"){
+        $(window).attr('location',"restaurant2.html");
     }else{
         alert("The restaurant you checked does not exist,please try again!");
     }
