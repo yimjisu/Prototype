@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Design Project</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  <link href="./DP4.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script> 
+  </head>
+
+  <body>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
+    <style>
+      body{
+        font-family: 'Baloo Thambi 2', cursive;
+      }
+    </style>
+<div id="dialog-form" title="Create new group" class='form'>
+  <p class="validateTips">All form fields are required.</p>
+<form>
+  <fieldset>
+    <label for="num">Limit number</label>
+    <input type="number" name="num" id="num" value="2" class="text ui-widget-content ui-corner-all">
+    <label for="start">Date</label>
+    <input type="date" name="date" id="date" class="text ui-widget-content ui-corner-all">
+    <label for="start">Start Time</label>
+    <input type="time" name="start" id="start" class="text ui-widget-content ui-corner-all">
+    <label for="end">End Time</label>
+    <input type="time" name="end" id="end" class="text ui-widget-content ui-corner-all">
+    <label for="comment">Comment</label>
+    <input type="text" name="comment" id="comment" value="Enjoy meal with us!" class="text ui-widget-content ui-corner-all">
+
+    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+  </fieldset>
+</form>
+</div>
+
+<div id="message-form" title="Send Message" class='form'>
+  <div id="sendtogroup" class="sendtogroup">Sending to Group #</div>
+  <form>
+    <fieldset>
+      <label for="name">Message</label>
+      <input type="text" name="name" id="name" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+  </div>
+    <table class = "collapse" id = "table">
+        <thead>
+           <tr>
+            <th style="width: 30%" class = "menu" id="restaurant">
+              <a href = ./index.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: blue; text-decoration: none;}
+                 </style>
+              Restaurant</a></th>
+            </th>
+            <th style="width: 30%" class = "menu" id="season">
+              <a href = ./season.html>
+                <style type="text/css">
+                  a:link { color: black; text-decoration: none;}
+                  a:visited { color: black; text-decoration: none;}
+                  a:hover { color: blue; text-decoration: none;}
+                 </style>
+              Season Recommendation</a></th>
+            <th style="width: 10%"></th>
+            <th style="width: 30%" class = "menu" id="myroom"><a href = ./myroom.html>
+              <style type="text/css">
+                a:link { color: black; text-decoration: none;}
+                a:visited { color: black; text-decoration: none;}
+                a:hover { color: blue; text-decoration: none;}
+               </style>
+            My Room</a></th>
+          </tr>
+        </thead>
+    </table>
+    <table>
+      <tr>
+      <td id="goback" style = "align-self: flex-start;"><a href = ./restaurant2.html><button> <<  Go Back</button></a></td>
+      <td id="restaurant_name" style="text-align: left; padding-left: 8%;font-size: large;">Join to a group of</td>
+      <td id="create-group" style="text-align: right; width: 400px;padding-right: 16%; font-size: smaller;">
+      <button><i class="fas fa-plus-circle"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>
+        <b>Create new group</b></button></td></tr>
+        </table>
+    <table id = "group table">
+    </table>
+    <script src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="./group_restaurant_name2.js"></script>
+  </body>
+</html>
