@@ -11,25 +11,17 @@ body {
     text-align: center;
 }
 
-table th{
-    background-color: #8FECC9;
-}
-
-.autocomplete{
-    position: relative;
-    display: inline-block;
-}
-
 .months{
   display: flex;
   justify-content: center;
   align-items:center;
   color: gray;
   font-size: 20px;
+  padding-top:25px;
 }
 
 #month2{
-  font-size: 30px;
+  font-size: 40px;
   color: gray;
   font-weight: bold;
 }
@@ -42,7 +34,6 @@ table th{
 
 #select{
   background-color: DarkOrange;
-  font-size: white;
   font-weight: bold;
   font-family: 'Baloo Thambi 2', cursive;
   font-size: 18px;
@@ -53,22 +44,64 @@ table th{
   padding-bottom: 3px;
   padding-left: 50px;
   padding-right: 50px;
+  outline: none;
+  cursor: pointer;
 }
 
 #vf{
   background-color: white;
-  font-size: 30px;
+  font-size: 25px;
   color: grey;
   font-weight: bold;
   width: 50%;
+  text-align: left;
+  padding-left: 100px;
 }
 
-.div_elt{
+.title{
+
+  padding-left: 100px;
+  font-size: 25px;
   color: gray;
+  font-weight: bold;
+}
+
+.recommendations{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items:center;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  padding-left: 100px;
+}
+
+#more{
+  display: none;
+
+}
+#more2{
+  display:none;
+}
+.btn_more{
+  background-color: white;
+  border: 2px solid MediumTurquoise;
+  font-size: white;
+  font-weight: bold;
+  font-family: 'Baloo Thambi 2', cursive;
+  font-size: 15px;
+  color: MediumTurquoise;
+  border-radius: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: none;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.btn_more:hover {
+  background-color: MediumTurquoise;
+  color: white;
+  border: 2px solid white;
 }
