@@ -115,7 +115,9 @@ function findgroup(){
   groupCell.append(groupTable);
   }}
 }
+
 ref.on('value', gotData);
+
 function gotData(data){
   groups = [];
   var val = data.val();
