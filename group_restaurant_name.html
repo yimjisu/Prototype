@@ -8,6 +8,7 @@
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  <link href="./DP4.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script> 
   </head>
@@ -44,9 +45,9 @@
   <div id="sendtogroup" class="sendtogroup">Sending to Group #</div>
   <form>
     <fieldset>
-      <label for="name">Message</label>
-      <input type="text" name="name" id="name" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <label for="message">Message</label>
+      <input type="text" name="message" id="message" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
+<!-- Allow form submission with keyboard without duplicating the dialog button -->
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </fieldset>
   </form>
@@ -95,5 +96,6 @@
     <script src="jquery/js/jquery-1.9.0.min.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script src="./group_restaurant_name.js"></script>
+    <script src="./login.js"></script>
   </body>
 </html>

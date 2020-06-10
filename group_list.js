@@ -1,4 +1,5 @@
 var groups = [{
+    'restaurant': 'Veggie Paradise',
     'profile' : [
       {'name': 'Jisu Yim',
       'comment': 'Waiting for anyone who can enjoy dinner!',
@@ -10,6 +11,7 @@ var groups = [{
     'number': {'current': 2, 'expected': 3},
     'date' : "2020.05.16 5PM ~ 7PM"
   },{
+    'restaurant': 'Vegenaran',
     'profile' : [
       {'name': 'Neila Rostom',
       'comment': 'Waiting for anyone who can enjoy dinner!',
@@ -24,6 +26,7 @@ var groups = [{
     'number': {'current': 3, 'expected': 4},
     'date' : "2020.05.16 5PM ~ 7PM"
   },{
+    'restaurant': 'Vegenaran',
     'profile' : [
       {'name': 'Jisu Yim',
       'comment': 'Waiting for anyone who can enjoy dinner!',
@@ -35,6 +38,7 @@ var groups = [{
     'number': {'current': 2, 'expected': 3},
     'date' : "2020.05.16 5PM ~ 7PM"
   },{
+    'restaurant': 'Veggie Paradise',
     'profile' : [
       {'name': 'Jisu Yim',
       'comment': 'Waiting for anyone who can enjoy dinner!',
@@ -43,6 +47,7 @@ var groups = [{
     'number': {'current': 1, 'expected': 3},
     'date' : "2020.05.16 5PM ~ 7PM"
   },{
+    'restaurant': 'Vegenaran',
     'profile' : [
       {'name': 'Neila Rostom',
       'comment': 'Waiting for anyone who can enjoy dinner!',
@@ -57,6 +62,7 @@ var groups = [{
     'number': {'current': 3, 'expected': 4},
     'date' : "2020.05.16 5PM ~ 7PM"
   },{
+    'restaurant': 'Veggie Paradise',
     'profile' : [
       {'name': 'Jisu Yim',
       'comment': 'Waiting for anyone who can enjoy dinner!',
