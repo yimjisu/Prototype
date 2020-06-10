@@ -60,6 +60,7 @@ button{
     font-weight: bold;
 }
 
+
 label, input { display:block; font-family : 'Baloo Thambi 2', cursive;}
 input.text { margin-bottom:12px; width:95%; padding: 10px; font-family : 'Baloo Thambi 2', cursive;}
 fieldset { padding:0; border:0; margin-top:25px; font-family : 'Baloo Thambi 2', cursive;}

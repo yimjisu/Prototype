@@ -6,7 +6,9 @@ var restaurant = document.getElementById("restaurant");
 var season = document.getElementById("season");
 var userName = "User";
 var userImg = "https://image.flaticon.com/icons/png/512/272/272075.png";
-var restaurantName = $("#restaurantName")[0].innerText;
+var restaurantName = $("#restaurantName")[0].innerText.trim();
+
+$("#rname").val(restaurantName);
 console.log(restaurantName);
 var groups = [];
 $(restaurant).css("background-color", "#2BC78C");
