@@ -10,6 +10,7 @@ var autocomplete_flag = 0;
 
 
 $(document).ready(function() {
+    $("#restaurant").css("background-color", "#2BC78C");
     set_price();
     set_category();
     bindEvent();

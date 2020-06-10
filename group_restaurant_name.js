@@ -21,6 +21,8 @@ function fnGetParameterByName(name) {
 
   if(restaurantName == ""){
     $("#findgroup").css("background-color", "#2BC78C");
+    $("#goback").hide();
+    $("#restaurant_name")[0].style.paddingLeft = "20%";
   }else{
   $(restaurant).css("background-color", "#2BC78C");
   }
