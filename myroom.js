@@ -49,6 +49,18 @@ function findgroup(){
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
   cell2 = numberRow.insertCell(1);
   cell2.innerText = restaurantName;
+  cell2.onmouseover = function(){
+    $(this)[0].style.color = "blue";
+  }
+  cell2.onmouseout = function(){
+    $(this)[0].style.color = "black";
+  }
+  cell2.onclick = function(){
+    var href;
+    if($(this)[0].innerText == 'Vegenaran') href = './restaurant2.html';
+    if($(this)[0].innerText == 'Veggie Paradise') href = './restaurant.html';
+    $(window).attr('location', href);
+  };
   numberRow.style.height= "15px";
 
   var profilecell = groupTable.insertRow(groupTable.rows.length).insertCell(0);
