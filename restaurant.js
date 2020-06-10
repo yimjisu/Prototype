@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 const googlemap_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBef7U76Qgh1iXNYdFEyeD1fATLJsn9GRA&maptype=roadmap&language=en"
 
-var gl_category;
-var gl_location;
+var gl_category = "";
+var gl_location = "";
 var gl_price_min = 0;
 var gl_price_max = 20000;
 var autocomplete_flag = 0;
@@ -11,9 +11,15 @@ var autocomplete_flag = 0;
 
 $(document).ready(function() {
     set_price();
+    set_category();
     bindEvent();
 });
 
+function set_category(){
+    $("[name='category_check']").each(function(){ 
+        $(this).removeAttr("checked");
+    });
+}
 function match(search_name){
     var count = 0;
     var restaurant_info_pairs = pairs;
