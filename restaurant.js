@@ -15,6 +15,13 @@ $(document).ready(function() {
     bindEvent();
 });
 
+window.addEventListener('pageshow', function (event) {
+    
+    if (event.persisted|| window.performance && window.performance.navigation.type == 2){
+            location.reload();
+    }
+});
+
 function set_category(){
     $("[name='category_check']").each(function(){ 
         $(this).removeAttr("checked");
