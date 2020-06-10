@@ -17,4 +17,10 @@ var pairs = [
         "location": "Daejeon",
         "price": 14000,
     },
+    {
+        "name": "Vegenaran",
+        "category": "Vegan",
+        "location": "Busan",
+        "price": 14000,
+    },
 ]

@@ -25,15 +25,30 @@ var selected_ings=[];
 var select_btn = document.getElementById("select");
 
 select_btn.addEventListener('click', function(){
-  var ings = document.getElementsByTagName("input")
+  var ings = document.getElementsByTagName("input");
   selected_ings=[];
   for(var i=0; i < ings.length; i++){
     if (ings[i].checked == true){
       selected_ings.push(ings[i].id);
     }
   }
-  if ((selected_ings.length == 1) && (selected_ings[0]=="Spinach")){
-    window.location.replace("./spinach.html");
+  if (selected_ings.length == 0){window.alert("Please make a selection.");}
+  else{
+    if ((selected_ings.length == 1) && (selected_ings[0]=="Spinach")){
+      window.location.replace("./spinach.html");
+    }else if (selected_ings.includes("Quinoa") && selected_ings.includes("Fennel") && (selected_ings.length == 2)){
+        window.location.replace("./quinoa.html");
+    }else if (selected_ings.includes("Orange") && selected_ings.includes("Lemon") && (selected_ings.length == 2)){
+      window.location.replace("./orange.html");
+    }else{
+      window.alert("Sorry! No result found, try something else.");
+      selected_ings=[];
+      for(var i=0; i < ings.length; i++){
+        if (ings[i].checked == true){
+          ings[i].checked=false;
+        }
+      }
+    }
   }
 });
 
