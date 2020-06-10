@@ -9,7 +9,6 @@ var userImg = "https://image.flaticon.com/icons/png/512/272/272075.png";
 var restaurantName = $("#restaurantName")[0].innerText.trim();
 
 $("#rname").val(restaurantName);
-console.log(restaurantName);
 var groups = [];
 $(restaurant).css("background-color", "#2BC78C");
 function findgroup(){
