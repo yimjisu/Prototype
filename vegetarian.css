@@ -1,24 +1,4 @@
-
-/* 
-      html {
-        height: 100%;
-        width: 100%;
-      }
-
-      body {
-        font-family: 'Open Sans', serif;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        -webkit-font-smoothing: antialiased;
-        overflow: -moz-scrollbars-none;
-        -ms-overflow-style: none;
-      } */
-
-      
-
-      .vegetarian {
+.vegetarian {
 
       display: block;
       position: absolute;
@@ -30,7 +10,7 @@
       width: 1515.00px;
     height: 980.00px;
     left: 0px;
-    top: 28px;
+    top: 50px;
 
 }
 

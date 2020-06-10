@@ -1,25 +1,10 @@
-// Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyCEv69BWpYRY-QN7AGvtO-C_C2SsZd6MbM",
-    authDomain: "dp-restaurant-database.firebaseapp.com",
-    databaseURL: "https://dp-restaurant-database.firebaseio.com",
-    projectId: "dp-restaurant-database",
-    storageBucket: "dp-restaurant-database.appspot.com",
-    messagingSenderId: "662891647449",
-    appId: "1:662891647449:web:1b923513033c43dbe309c8",
-    measurementId: "G-F8XX7MQNSS"
-  };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-const db = firebase.database();
+$( document ).ready(function() {
 const googlemap_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBef7U76Qgh1iXNYdFEyeD1fATLJsn9GRA&maptype=roadmap&language=en"
 
 var gl_category;
 var gl_location;
-var gl_price_min;
-var gl_price_max;
+var gl_price_min = 0;
+var gl_price_max = 20000;
 var autocomplete_flag = 0;
 
 
@@ -63,107 +48,31 @@ function submit_name(){
 }
 
 function submit_location(){
-    var gl_location = $('#location_name').val();
-    db.ref('/location/').push({'location':gl_location});
+    gl_location = $('#location_name').val();
     $("iframe").attr('src', googlemap_url + `&q=${gl_location}`+ `&zoom=17`);
 }
 
 function submit_search(){
-   
-    
-    db.ref('/category/').once('value', function(snapshot){
-        if(snapshot.val()!= null){    
-            var keys = Object.keys(snapshot.val());
-            var recent = keys[keys.length - 1];
-            var category = snapshot.val()[recent];
-            category = category.category;
-            if(category == "Vegetarian"){
-                db.ref('/flag/').push({"name":'Vegetarian_flag'});
-                //Vegetarian_flag = 1;
-            }else if(category == "Vegan"){
-                db.ref('/flag/').push({"name":'Vegan_flag'});
-                //Vegan_flag = 1;
-            }
+    var count = 0;
+    restaurants = [
+        {'category': 'Vegetarian', 'location': 'seoul', 'priceMin':10000, 'priceMax':16000, 'href':'vegetarian.html'},
+        {'category': 'Vegan', 'location': 'busan', 'priceMin':4000, 'priceMax':10000, 'href':'vegan.html'}
+    ]
+    //console.log(gl_location.toLowerCase(), gl_category, gl_price_min, gl_price_max);
+    for (var i=0; i<restaurants.length; i++){
+        if(restaurants[i]['category'] == gl_category
+        && restaurants[i]['location'] == gl_location.toLowerCase()
+        && restaurants[i]['priceMin'] >= gl_price_min
+        && restaurants[i]['priceMax'] <= gl_price_max){
+            $(window).attr('location', restaurants[i]['href']);
+            break;
         }
-    })
-    .then(function(){
-        db.ref(`/category/`).remove();
-    })
-    
-    db.ref('/location/').once('value', function(snapshot){
-        if(snapshot.val()!= null){    
-            var keys = Object.keys(snapshot.val());
-            var recent = keys[keys.length - 1];
-            var location = snapshot.val()[recent];
-            location = location.location;
-            if(location == "Seoul"){
-                db.ref('/flag/').push({"name":'Seoul_flag'});
-                //Seoul_flag = 1;
-            }else if(location == "Busan"){
-                db.ref('/flag/').push({"name":'Busan_flag'});
-                //Busan_flag = 1;
-            }
-        }
-    })
-    .then(function(){
-        db.ref(`/location/`).remove();
-    })
-
-    db.ref('/price/').once('value', function(snapshot){
-        if(snapshot.val()!= null){    
-            var keys = Object.keys(snapshot.val());
-            var max = keys[keys.length - 1];
-            var min = keys[keys.length - 2];
-            var price_max = snapshot.val()[max];
-            var price_min = snapshot.val()[min];
-            price_max = price_max.price_max;
-            price_min = price_min.price_min;
-            if(price_min <= 10000 && price_max >= 16000){
-                db.ref('/flag/').push({"name":'Vegetarian_price_flag'});
-                //Vegetarian_price_flag = 1;
-            }else if(price_min <= 4000 && price_max >= 10000){
-                db.ref('/flag/').push({"name":'Vegan_price_flag'});
-                //Vegan_price_flag = 1;
-            }else{
-                alert("The choose range of price is not found ,please try again!");
-            }
-        }
-    })
-    .then(function(){
-        db.ref(`/price/`).remove();
-    })
-    // if(Vegetarian_flag && Seoul_flag && Vegetarian_price_flag){
-    //     $(window).attr('location',"vegetarian.html");
-    // }else if(Vegan_flag && Busan_flag && Vegan_price_flag){
-    //     $(window).attr('location',"vegan.html");
-    // }else{
-    //     alert("No match result,please try again!");
-    // }
-    db.ref('/flag/').once('value', function(snapshot){
-        if(snapshot.val()!= null){    
-            var keys = Object.keys(snapshot.val());
-            var price_idx = keys[keys.length - 1];
-            var location_idx = keys[keys.length - 2];
-            var category_idx = keys[keys.length - 3];
-            var price = snapshot.val()[price_idx];
-            var location = snapshot.val()[location_idx];
-            var category = snapshot.val()[category_idx];
-            price = price.name;
-            location = location.name;
-            category = category.name;
-            if(price == "Vegetarian_price_flag" && location == "Seoul_flag" && category == "Vegetarian_flag"){
-                $(window).attr('location',"vegetarian.html");
-            }else if(category == "Vegan_flag" && location== "Busan_flag" && price == "Vegan_price_flag"){
-                $(window).attr('location',"vegan.html");
-            }else{
-                alert("No match result,please try again!");
-            }
-        }
-    })
-    .then(function(){
-        db.ref(`/flag/`).remove();
-    })
-
+        count++;
+    }
+    console.log(count);
+    if(count == restaurants.length){
+        alert("Cannot find matching result,please try again!");
+    }
 }
 
 function bindEvent(){
@@ -252,7 +161,7 @@ function bindEvent(){
 
     $("[name='category_check']").click(function(){
         gl_category = this.value;
-        db.ref('/category/').push({'category':gl_category});
+        //console.log(gl_category);
         $("[name='category_check']").each(function(){ 
             if( $(this).val() != gl_category){
                 $(this).removeAttr("checked");
@@ -320,11 +229,8 @@ function set_price(){
 		]
 		})
 	.on("changed", function(e, args) {
-        var min = args.value.leftValue;
-        var max = args.value.rightValue;
-        db.ref('/price/').push({"price_min":min});
-        db.ref('/price/').push({"price_max":max});
-        console.log(min,max);
+        gl_price_min = args.value.leftValue;
+        gl_price_max = args.value.rightValue;
         
 	});
 	$("#price-range").data("slider").setRange({
@@ -787,8 +693,6 @@ Slider.prototype = {
         } else {
             content = value.leftValue + "-" + value.rightValue + this._unit
         }
-        db.ref('/price/').push({"price_min":value.leftValue});
-        db.ref('/price/').push({"price_max":value.rightValue});
         this.$tipContent.html(content);
         this._moveValue = value
     }
@@ -839,3 +743,4 @@ Slider.prototype = {
 //     // var price_max = all_data[3];
 //     return all_data;
 // }
+});

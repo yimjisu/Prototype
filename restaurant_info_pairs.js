@@ -8,7 +8,7 @@ var pairs = [
     {
         "name": "Plant Food Land",
         "category": "Vegetarian",
-        "location": "Busan",
+        "location": "Dajeon",
         "price": 16000,
     },
     {

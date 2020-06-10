@@ -8,6 +8,7 @@
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  <link href="./DP4.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js "></script> 
   </head>
@@ -45,9 +46,10 @@
   <div id="sendtogroup" class="sendtogroup">Sending to Group #</div>
   <form>
     <fieldset>
-      <label for="name">Message</label>
-      <input type="text" name="name" id="name" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <label for="message">Message</label>
+      <input type="text" name="message" id="message" value="I want to join with you!" class="text ui-widget-content ui-corner-all">
+<!-- Allow form submission with keyboard without duplicating the dialog button -->
+
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </fieldset>
   </form>
@@ -99,8 +101,11 @@
               <img src="https://cookieandkate.com/images/2017/03/italian-chopped-salad-vegetarian.jpg" alt="Simply Easy Learning" width="80"
            height="80" style="vertical-align:text-top;">
               <div style="line-height: 0.5">
-                <h1 style="display: inline; padding-left: 20px; ">
+
+                <h1 style="display: inline; padding-left: 20px; " id="restaurantName">
                    Vegenaran
+                </h1>
+                <h2 style="display: inline; padding-left: 20px; ">
                   <span style="color:#ffdf00; font-size: 30px; text-align: top;">
                   <i class="fas fa-star" ></i>
                   <i class="fas fa-star" ></i>
@@ -109,7 +114,7 @@
                   
                   726 Reviews
                   </span>
-                </h1>
+                </h2>
                 <h3 style="display: block; padding-left: 10px">
                   <i class="fas fa-phone-alt" style="padding-left: 10px"></i> 010-25301488  
                   <i class="fas fa-envelope" style="padding-left: 10px"></i> vegenaran@easydine.com
@@ -201,7 +206,8 @@
                     <td style="text-align: left; padding-left: 10px; font-size: larger">
                       <b>Join to a group</b></td>
                     <td style="text-align: right; font-size: smaller;">
-                      <a href = ./group_restaurant_name2.html>
+                      <a href = ./group_restaurant_name.html?name=Vegenaran>
+
                         <style type="text/css">
                           a:link { color: black; text-decoration: none;}
                           a:visited { color: black; text-decoration: none;}
@@ -223,5 +229,6 @@
     <script src="jquery/js/jquery-1.9.0.min.js"></script>
     <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script src="./restaurant_name.js"></script>
+    <script src="./login.js"></script>
   </body>
 </html>
