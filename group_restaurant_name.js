@@ -7,23 +7,31 @@ $( document ).ready(function() {
   var groups = [];
 var restaurant = document.getElementById("restaurant");
 var season = document.getElementById("season");
-var restaurantName;
+var restaurantName ="";
+console.log(restaurantName);
 var Result = fnGetParameterByName('name');
 console.log(Result);
 function fnGetParameterByName(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
   results = regex.exec(location.search);
-  var result = results === null ? "G" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  var result = results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   restaurantName = result.replace('_', ' ');
-} 
-$(restaurant).css("background-color", "#2BC78C");
+  console.log(restaurantName);
+
+  if(restaurantName == ""){
+    $("#findgroup").css("background-color", "#2BC78C");
+  }else{
+  $(restaurant).css("background-color", "#2BC78C");
+  }
+}
 
 var groupNumber = 0;
 function setrestaurantName(){
   var cell = document.getElementById('restaurant_name');
-  cell.innerText += ' '+restaurantName;
+  if(restaurantName != "") cell.innerText += ' '+restaurantName;
   cell.style.fontWeight = 'bold';
+  if(restaurantName != "") $("#rname").val(restaurantName);
 }
 setrestaurantName();
 function findgroup(){
@@ -42,6 +50,7 @@ function findgroup(){
   var profile = group['profile'];
   var number = group['number'];
   var date = group['date'];
+  var rname = group['restaurant']
   var groupTable = document.createElement("table");
   groupTable.style.backgroundColor = "#E7FDF5"; groupTable.style.padding = "10px"; groupTable.style.height = "300px"; groupTable.style.alignContent = "flex-start";
   groupTable.style.borderRadius = '10px'; groupTable.style.width = "350px";
@@ -62,7 +71,25 @@ function findgroup(){
   cell1.innerHTML += '  '+number['current']+'/'+number['expected'];
   cell1.style.fontSize = "12px";  cell1.style.letterSpacing = '5px';
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
-  cell2 = numberRow.insertCell(1);  cell2.align = 'right';
+  if(restaurantName == "") {
+    cell3 = numberRow.insertCell(1); cell3.innerHTML = "<a>"+rname+"</a>";
+    cell3.class = 'restaurantname';
+    cell3.onmouseover = function(){
+      $(this)[0].style.color = "blue";
+    }
+    cell3.onmouseout = function(){
+      $(this)[0].style.color = "black";
+    }
+    cell3.onclick = function(){
+      var href;
+      if($(this)[0].innerText == 'Vegenaran') href = './restaurant2.html';
+      if($(this)[0].innerText == 'Veggie Paradise') href = './restaurant.html';
+      $(window).attr('location', href);
+    };
+    cell2 = numberRow.insertCell(2);
+  }
+  else cell2 = numberRow.insertCell(1);
+  cell2.align = 'right';
   sendMessage = document.createElement('button');  sendMessage.innerHTML = '<b>Send Message</b>';
   sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
   sendMessage.onclick = function(){
@@ -75,7 +102,7 @@ function findgroup(){
   numberRow.style.height= "15px";
 
   var profilecell = groupTable.insertRow(groupTable.rows.length).insertCell(0);
-  profilecell.colSpan = "2";
+  profilecell.colSpan = "3";
 
   for(var i=0; i<profile.length; i++){
     var profileTable = document.createElement('table');
@@ -104,6 +131,7 @@ function findgroup(){
 
   var cell = groupTable.insertRow(groupTable.rows.length);
   cell1 = cell.insertCell(0);
+  cell1.colSpan = "2";
   cell1.innerHTML = 
   '<i class="far fa-calendar-alt"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>'
   + ' '+date;
@@ -111,7 +139,7 @@ function findgroup(){
   cell1.style.paddingLeft = '10px';
 
   var groupCell = groupRow.insertCell(j%3);
-  groupCell.colSpan = "2";
+  groupCell.colSpan = "3";
   groupCell.append(groupTable);
   }}
 }
@@ -124,7 +152,8 @@ function gotData(data){
  var key = Object.keys(val);
   for (var i=0; i<key.length; i++){
       var k= key[i];
-      if(val[k]['restaurant'] == restaurantName)  groups.push(val[k]);
+      if(restaurantName == "" || val[k]['restaurant'] == restaurantName)
+        groups.push(val[k]);
     }
   console.log(groups);
   findgroup();

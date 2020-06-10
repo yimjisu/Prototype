@@ -157,12 +157,13 @@ form = dialog1.find( "form" ).on( "submit", function( event ) {
 var dialog2, form,
      
 // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+rname = $("#rname"),
 num = $( "#num" ),
 dates = $("#date"),
 start = $("#start"),
 end = $( "#end" ),
 comment = $( "#comment" ),
-allFields = $( [] ).add( num ).add( start ).add(end).add( comment ),
+allFields = $( [] ).add(rname).add( num ).add( start ).add(end).add( comment ),
 tips = $( ".validateTips" );
 
 function updateTips( t ) {
@@ -251,6 +252,7 @@ addUser();
 });
 
 $( "#create-group" ).on( "click", function() {
+
 dialog2.dialog( "open" );
 });
 
