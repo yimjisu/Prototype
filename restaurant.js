@@ -48,7 +48,7 @@ function submit_name(){
 }
 
 function submit_location(){
-    var gl_location = $('#location_name').val();
+    gl_location = $('#location_name').val();
     $("iframe").attr('src', googlemap_url + `&q=${gl_location}`+ `&zoom=17`);
 }
 
@@ -57,11 +57,10 @@ function submit_search(){
         {'category': 'Vegetarian', 'location': 'seoul', 'priceMin':10000, 'priceMax':16000, 'href':'vegetarian.html'},
         {'category': 'Vegan', 'location': 'busan', 'priceMin':4000, 'priceMax':10000, 'href':'vegan.html'}
     ]
-    gl_location = $('#location_name').val();
-    console.log(gl_location, gl_category, gl_price_min, gl_price_max);
+    console.log(gl_location.toLowerCase(), gl_category, gl_price_min, gl_price_max);
     for (var i=0; i<restaurants.length; i++){
         if(restaurants[i]['category'] == gl_category
-        && restaurants[i]['location'] == gl_location
+        && restaurants[i]['location'] == gl_location.toLowerCase()
         && restaurants[i]['priceMin'] >= gl_price_min
         && restaurants[i]['priceMax'] <= gl_price_max){
             $(window).attr('location', restaurants[i]['href']);
