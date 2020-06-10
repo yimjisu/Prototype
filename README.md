@@ -15,7 +15,7 @@ Our web application is available at [EasyDine2020](https://easydine2020.web.app/
 3. Choose the dietary restriction (currently supports "Vegetarian" and "Vegan" ).
 4. Search the desired place by typing in the name and then click the “confirm” button or press the “enter”,
 5. The place will be shown on Google map (currently supports "Seoul" and "Busan",respectively).
-6. Choose the price range in terms of your preference by dragging the bar (currently supports "10000 - 16000" and "2000 - 10000",respectively). 
+6. Choose the price range in terms of your preference by dragging the bar (currently supports "minimum price value <= 10000 to maximum value >= 16000" and "minimum value <= 4000 to 10000 <= maximum value < 16000,respectively). 
 7. Click the “search” button. 
 8. The recommended restaurants’ page based on the filters are now available. 
 9. Click the restaurant’s name, it will link to the specific restaurant page you choose.
