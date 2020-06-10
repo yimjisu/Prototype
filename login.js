@@ -215,11 +215,11 @@ function addUser() {
     }
     console.log(parseInt(num));
     data = {
-    'restaurant': Name,
+    'restaurant': rname.val(),
     'myroom': true,
-    'profile': [{'name': userName,
+    'profile': [{'name': "User",
       'comment': comment.val(),
-      'img' : userImg}],
+      'img' : "https://image.flaticon.com/icons/png/512/272/272075.png"}],
     'number': {'current': 1, 
     'expected': parseInt(numVal)},
     'date' : date+' '+stime+'~'+etime
