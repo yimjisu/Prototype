@@ -53,11 +53,12 @@ function submit_location(){
 }
 
 function submit_search(){
+    var count = 0;
     restaurants = [
         {'category': 'Vegetarian', 'location': 'seoul', 'priceMin':10000, 'priceMax':16000, 'href':'vegetarian.html'},
         {'category': 'Vegan', 'location': 'busan', 'priceMin':4000, 'priceMax':10000, 'href':'vegan.html'}
     ]
-    console.log(gl_location.toLowerCase(), gl_category, gl_price_min, gl_price_max);
+    //console.log(gl_location.toLowerCase(), gl_category, gl_price_min, gl_price_max);
     for (var i=0; i<restaurants.length; i++){
         if(restaurants[i]['category'] == gl_category
         && restaurants[i]['location'] == gl_location.toLowerCase()
@@ -66,6 +67,11 @@ function submit_search(){
             $(window).attr('location', restaurants[i]['href']);
             break;
         }
+        count++;
+    }
+    console.log(count);
+    if(count == restaurants.length){
+        alert("Cannot find matching result,please try again!");
     }
 }
 
@@ -155,7 +161,7 @@ function bindEvent(){
 
     $("[name='category_check']").click(function(){
         gl_category = this.value;
-        console.log(gl_category);
+        //console.log(gl_category);
         $("[name='category_check']").each(function(){ 
             if( $(this).val() != gl_category){
                 $(this).removeAttr("checked");
