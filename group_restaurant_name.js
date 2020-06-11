@@ -74,20 +74,13 @@ function findgroup(){
   cell1.style.fontSize = "12px";  cell1.style.letterSpacing = '5px';
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
   if(restaurantName == "") {
-    cell3 = numberRow.insertCell(1); cell3.innerHTML = "<a>"+rname+"</a>";
-    cell3.class = 'restaurantname';
-    cell3.onmouseover = function(){
-      $(this)[0].style.color = "blue";
-    }
-    cell3.onmouseout = function(){
-      $(this)[0].style.color = "black";
-    }
-    cell3.onclick = function(){
-      var href;
-      if($(this)[0].innerText == 'Vegenaran') href = './restaurant2.html';
-      if($(this)[0].innerText == 'Veggie Paradise') href = './restaurant.html';
-      $(window).attr('location', href);
-    };
+    cell3 = numberRow.insertCell(1); 
+    var href;
+    if(rname == 'Vegenaran') href = './restaurant2.html';
+    if(rname == 'Veggie Paradise') href = './restaurant.html';
+    cell3.innerHTML = "<a href ="+ href
+      +'><style type="text/css">a:link { color: black; text-decoration: none;}a:visited { color: black; text-decoration: none;}a:hover { color: blue; text-decoration: none; }</style>'
+      + rname + "</a>";
     cell2 = numberRow.insertCell(2);
   }
   else cell2 = numberRow.insertCell(1);
