@@ -217,6 +217,7 @@ function addUser() {
     data = {
     'restaurant': rname.val(),
     'myroom': true,
+    'host': "User",
     'profile': [{'name': "User",
       'comment': comment.val(),
       'img' : "https://image.flaticon.com/icons/png/512/272/272075.png"}],
