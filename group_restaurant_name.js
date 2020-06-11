@@ -154,7 +154,7 @@ function gotData(data){
  var key = Object.keys(val);
   for (var i=0; i<key.length; i++){
       var k= key[i];
-      if(restaurantName == "" || val[k]['restaurant'] == restaurantName)
+      if((restaurantName == "" || val[k]['restaurant'] == restaurantName) && val[k]['host'] != userName)
         groups.push(val[k]);
     }
   console.log(groups);
