@@ -49,8 +49,8 @@ function match(search_name){
 	};
 }
 
-function submit_name(){
-    var search_name = $("#restaurant_name").val();
+function submit_name(selected){
+    var search_name = selected || $("#restaurant_name").val();
     var result = match(search_name);
     if(result.result && search_name == "Veggie Paradise"){
         $(window).attr('location',"restaurant.html");
@@ -61,8 +61,8 @@ function submit_name(){
     }
 }
 
-function submit_location(){
-    gl_location = $('#location_name').val();
+function submit_location(selected){
+    gl_location = selected || $('#location_name').val();
     $("iframe").attr('src', googlemap_url + `&q=${gl_location}`+ `&zoom=17`);
 }
 
@@ -126,7 +126,8 @@ function bindEvent(){
         response(data);
       },
       select: function(event, ui) {
-        var name = ui.item.value;
+        //var name = ui.item.value;
+        submit_name(ui.item.value);
         $(this).val("").focus();
         return false;
       }
@@ -142,7 +143,8 @@ function bindEvent(){
         response(data);
       },
       select: function(event, ui) {
-        var name = ui.item.value;
+        //var name = ui.item.value;
+        submit_location(ui.item.value);
         $(this).val("").focus();
         return false;
       }
