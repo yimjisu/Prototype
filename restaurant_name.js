@@ -51,8 +51,11 @@ function findgroup(){
   sendMessage = document.createElement('button');
   sendMessage.innerHTML = '<b>Send Message</b>';
   sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
+  sendMessage.setAttribute("class", j.toString());
   sendMessage.onclick = function(){    
     $("#sendtogroup")[0].innerText = "Group : "+$(this)[0].id;
+    idx = $(this)[0].id.split('#');
+    sendData = groups[parseInt(idx[1], 10)];
     dialog1.dialog( "open" );
   };
   cell2.append(sendMessage);
@@ -107,7 +110,7 @@ function findgroup(){
   cell1.align = 'left';
   cell1.style.paddingLeft = '10px';
 
-  var groupCell = table.insertRow(table.rows.length-1).insertCell(0);
+  var groupCell = table.insertRow(table.rows.length).insertCell(0);
   groupCell.colSpan = "2";
   groupCell.append(groupTable);
 }

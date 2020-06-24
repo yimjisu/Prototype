@@ -56,11 +56,15 @@ var show_v=0;
 var show_veg = document.getElementById("show_more");
 show_veg.addEventListener('click', function(){
   if (!show_v){
-    document.getElementById("more").style.display = "block";
+    more = document.getElementsByClassName("more")
+    for(var i=0; i<more.length; i++)
+      more[i].style.display = "block";
     show_veg.innerHTML="Show less"
     show_v=1;
   }else{
-    document.getElementById("more").style.display = "none";
+    more = document.getElementsByClassName("more")
+    for(var i=0; i<more.length; i++)
+      more[i].style.display = "none";
     show_veg.innerHTML="Show more"
     show_v=0;
   }
