@@ -125,13 +125,14 @@ function checkRegexp( o, regexp, n ) {
     return true;
   }
 }
-     
+var sendData;
 function send() {
   allFields.removeClass( "ui-state-error" );
+  console.log(sendData);
+  refMy.push(sendData);
   dialog1.dialog( "close" );
   return true;
 }
-
 dialog1 = $( "#message-form" ).dialog({
   autoOpen: false,
   height: 400,

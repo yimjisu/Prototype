@@ -6,23 +6,19 @@ $( document ).ready(function() {
   var userImg = "https://image.flaticon.com/icons/png/512/272/272075.png";
   var Name = "Veggie Paradise";
   var groups = [];
+  var groups1 = [];
 var myroom = document.getElementById("myroom");
-
+var table, numRows;
 $(myroom).css("background-color", "#2BC78C");
 
-function findgroup(){
-  var table = document.getElementById('group table');
-  var numRows =table.rows.length;
-  console.log(table.rows.length, groups);
-  for(var i=0; i<numRows ;i++){
-    table.deleteRow(0);
-  }
-  table.style.paddingLeft = "15%";  table.style.paddingRight = "15%"; table.style.borderSpacing = "10px";
+function addgroups(groups, m){
+  row = table.insertRow(table.rows.length);
+  row.innerHTML = m.bold();
   for(var k=0; k<groups.length/3; k++){
     var groupRow = table.insertRow(table.rows.length);
   for (var j=k*3; j<(k+1)*3; j++){
     if (j == groups.length) break;
-    group = groups[j];
+    group = groups[groups.length-1-j];
   var profile = group['profile'];
   var number = group['number'];
   var date = group['date'];
@@ -47,16 +43,30 @@ function findgroup(){
   cell1.innerHTML += '  '+number['current']+'/'+number['expected'];
   cell1.style.fontSize = "12px";  cell1.style.letterSpacing = '5px';
   cell1.align = 'left';  cell1.style.paddingLeft = '10px';
-  cell2 = numberRow.insertCell(1);
+  if(m == 'Groups that you join'){
+  cell3 = numberRow.insertCell(1);
+  console.log(group);
+  if('accepted' in group){
+    cell3.innerHTML = 'Accepted'.fontcolor('blue');
+  }
+  else{
+    cell3.innerHTML = 'Waiting'.fontcolor('red');
+  }
+  cell2 = numberRow.insertCell(2);
+  }
+  else{
+    cell2 = numberRow.insertCell(1);
+  }
   if(restaurantName == 'Vegenaran') href = './restaurant2.html';
   if(restaurantName == 'Veggie Paradise') href = './restaurant.html';
+ 
   cell2.innerHTML = "<a href ="+ href
     +'><style type="text/css">a:link { color: black; text-decoration: none;}a:visited { color: black; text-decoration: none;}a:hover { color: blue; text-decoration: none; }</style>'
     + restaurantName + "</a>";
   numberRow.style.height= "15px";
 
   var profilecell = groupTable.insertRow(groupTable.rows.length).insertCell(0);
-  profilecell.colSpan = "2";
+  profilecell.colSpan = "3";
 
   for(var i=0; i<profile.length; i++){
     var profileTable = document.createElement('table');
@@ -69,7 +79,7 @@ function findgroup(){
     cell1 = cell.insertCell(0); cell1.innerHTML = imgSrc; cell1.align = 'right'; cell1.style.width = "20px";
     cell2 = cell.insertCell(1); cell2.innerHTML = user['name']; cell2.style.fontSize = "15px"; cell2.align = 'left';
     //cell3 = cell.insertCell(2); cell3.append(seeProfile); cell3.align = 'right';
-    cell.colSpan = "2";
+    cell.colSpan = "3";
     profileTable.appendChild(cell);
 
     var cell = document.createElement('tr');
@@ -89,23 +99,37 @@ function findgroup(){
   '<i class="far fa-calendar-alt"></i><script src="https://kit.fontawesome.com/fc9bca2b43.js" crossorigin="anonymous"></script>'
   + ' '+date;
   cell1.align = 'left';
+  cell1.colSpan = '3';
   cell1.style.paddingLeft = '10px';
 
   var groupCell = groupRow.insertCell(j%3);
-  groupCell.colSpan = "2";
+  groupCell.colSpan = "3";
   groupCell.append(groupTable);
   }}
+}
+function findgroup(){
+  table = document.getElementById('group table');
+  numRows =table.rows.length;
+  console.log(table.rows.length, groups);
+  for(var i=0; i<numRows ;i++){
+    table.deleteRow(0);
+  }
+  table.style.paddingLeft = "15%";  table.style.paddingRight = "15%"; table.style.borderSpacing = "10px";
+  addgroups(groups, 'Groups that you created');
+  addgroups(groups1, 'Groups that you join');
 }
 
 
 
 function gotData(data){
   groups = [];
+  groups1 = [];
   var val = data.val();
  var key = Object.keys(val);
   for (var i=0; i<key.length; i++){
       var k= key[i];
       if('myroom' in val[k])  groups.push(val[k]);
+      else groups1.push(val[k]);
     }
   console.log(groups);
   findgroup();

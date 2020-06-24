@@ -87,9 +87,11 @@ function findgroup(){
   cell2.align = 'right';
   sendMessage = document.createElement('button');  sendMessage.innerHTML = '<b>Send Message</b>';
   sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
-  sendMessage.onclick = function(){
-    
+  sendMessage.setAttribute("class", j.toString());
+  sendMessage.onclick = function(){    
     $("#sendtogroup")[0].innerText = "Group : "+$(this)[0].id;
+    idx = $(this)[0].id.split('#');
+    sendData = groups[parseInt(idx[1], 10)];
     dialog1.dialog( "open" );
   };
   cell2.append(sendMessage);
