@@ -50,6 +50,7 @@ function findgroup(){
   cell2.align = 'right';
   sendMessage = document.createElement('button');
   sendMessage.innerHTML = '<b>Join Group</b>';
+  sendMessage.style.fontSize = "13px";
   sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
   sendMessage.setAttribute("class", j.toString());
   sendMessage.onclick = function(){    
