@@ -49,7 +49,7 @@ function findgroup(){
   cell2 = numberRow.insertCell(1);
   cell2.align = 'right';
   sendMessage = document.createElement('button');
-  sendMessage.innerHTML = '<b>Send Message</b>';
+  sendMessage.innerHTML = '<b>Join Group</b>';
   sendMessage.setAttribute("id", restaurantName+" #"+j.toString());
   sendMessage.setAttribute("class", j.toString());
   sendMessage.onclick = function(){    
