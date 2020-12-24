@@ -12,7 +12,7 @@ $("#rname").val(restaurantName);
 var groups = [];
 $(restaurant).css("background-color", "#2BC78C");
 function findgroup(){
-  var table = document.getElementById('grouptable');
+  var table = document.getElementById('group table');
   var numRows =table.rows.length;
   console.log(table.rows.length, groups);
   for(var i=0; i<numRows-2 ;i++){
