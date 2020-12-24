@@ -108,7 +108,7 @@ function addgroups(groups, m){
   }}
 }
 function findgroup(){
-  table = document.getElementById('grouptable');
+  table = document.getElementById('group table');
   numRows =table.rows.length;
   console.log(table.rows.length, groups);
   for(var i=0; i<numRows ;i++){
